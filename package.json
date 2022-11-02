@@ -1,10 +1,15 @@
 {
   "scripts": {
-    "start": "vite-node src/index.ts"
+    "start": "vite-node src/index.ts",
+    "test": "vitest",
+    "test watch": "vitest watch"
   },
   "dependencies": {
     "@slack/bolt": "^3.12.1",
     "dotenv": "^16.0.3",
     "vite-node": "^0.24.5"
+  },
+  "devDependencies": {
+    "vitest": "^0.24.5"
   }
 }

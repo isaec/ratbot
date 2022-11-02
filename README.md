@@ -1,0 +1,2 @@
+# ratbot
+robotics slack bot

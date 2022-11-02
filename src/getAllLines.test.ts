@@ -1,5 +1,5 @@
 import { assert, expect, test } from "vitest";
-import { getAllLines } from "./getAllLines";
+import { getAllLines, setToSortedArray } from "./getAllLines";
 
 test.each([
   "Seeking approval for lines 86 and 87 (parts to fix swerve modules)",
@@ -17,5 +17,5 @@ test.each([
   "req approval for lines 129-130 (surgical tubing, diff ID). Same ones ordered as last year",
   "seeking approval for lines 16-18 and 22",
 ])(`getAllLines(%s)`, (text) => {
-  expect(getAllLines(text)).toMatchSnapshot();
+  expect(setToSortedArray(getAllLines(text))).toMatchSnapshot();
 });

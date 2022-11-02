@@ -53,3 +53,6 @@ export const accumulate = <T>(iter: Iterator<T>): T[] => {
   }
   return result;
 };
+
+export const setToSortedArray = <T>(set: Set<T>): T[] =>
+  accumulate(set.values()).sort();

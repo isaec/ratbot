@@ -69,6 +69,14 @@ Set {
 }
 `;
 
+exports[`getAllLines(seeking approval for lines 16-18 and 22) 1`] = `
+Set {
+  16,
+  17,
+  18,
+}
+`;
+
 exports[`getAllLines(seeking approval for lines 112-114) 1`] = `
 Set {
   112,

@@ -15,6 +15,7 @@ test.each([
   "seeking approval for lines 125-127, bumper fabric for onseason and shoulder bolt for swerve (edited) ",
   " seeking approval for lines 134 and 135. are the 3 1/2 needles the correct types we need?",
   "req approval for lines 129-130 (surgical tubing, diff ID). Same ones ordered as last year",
+  "seeking approval for lines 16-18 and 22",
 ])(`getAllLines(%s)`, (text) => {
   expect(getAllLines(text)).toMatchSnapshot();
 });

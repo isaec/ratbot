@@ -1,6 +1,9 @@
 import { App } from "@slack/bolt";
 import * as dotenv from "dotenv";
 import { accumulate, getAllLines } from "./getAllLines";
+import { readLine } from "./gsheetReader";
+
+readLine(2);
 
 dotenv.config();
 

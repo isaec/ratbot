@@ -1,6 +1,8 @@
 {
-	"dependencies": {
-		"botkit": "^4.15.0",
-		"vite-node": "^0.24.5"
-	}
+  "scripts": {
+    "start": "vite-node src/index.ts"
+  },
+  "dependencies": {
+    "vite-node": "^0.24.5"
+  }
 }

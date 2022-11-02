@@ -3,17 +3,30 @@
  */
 const singleLine = /lines?\s(\d+)(?:\s(?!-|\d|and|&)|$)/g;
 
+const singleHyphenatedLine = /lines?\s(\d+)-(?!\d)/g;
+
 const lineRange = /lines?\s(\d+)-(\d+)/g;
 
 const lineAndLine = /lines?\s(\d+)\s(?:and|&|\+)\s(\d+)/g;
 
-export const getAllLines = (text: string): Set<number> => {
-  const lines: Set<number> = new Set();
-  for (const match of text.matchAll(singleLine)) {
-    if (typeof match[1] === "string") {
-      lines.add(parseInt(match[1]));
+const runRegexes = (
+  string: string,
+  results: Set<number>,
+  ...regexes: RegExp[]
+) => {
+  for (const regex of regexes) {
+    for (const match of string.matchAll(regex)) {
+      if (typeof match[1] === "string") {
+        results.add(parseInt(match[1]));
+      }
     }
   }
+};
+
+export const getAllLines = (text: string): Set<number> => {
+  const lines: Set<number> = new Set();
+  // run the regex that return a single line match
+  runRegexes(text, lines, singleLine, singleHyphenatedLine);
   for (const match of text.matchAll(lineRange)) {
     if (typeof match[1] === "string" && typeof match[2] === "string") {
       const start = parseInt(match[1]);

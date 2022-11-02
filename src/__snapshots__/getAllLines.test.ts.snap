@@ -29,7 +29,11 @@ Set {
 }
 `;
 
-exports[`getAllLines(Seeking approval for line 99-bolt extractors for falcon stripped screws) 1`] = `Set {}`;
+exports[`getAllLines(Seeking approval for line 99-bolt extractors for falcon stripped screws) 1`] = `
+Set {
+  99,
+}
+`;
 
 exports[`getAllLines(Seeking approval for lines 86 and 87 (parts to fix swerve modules)) 1`] = `
 Set {

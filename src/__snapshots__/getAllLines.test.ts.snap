@@ -74,6 +74,7 @@ exports[`getAllLines(seeking approval for lines 16-18 and 22) 1`] = `
   16,
   17,
   18,
+  22,
 ]
 `;
 

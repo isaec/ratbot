@@ -3,6 +3,8 @@
     "start": "vite-node src/index.ts"
   },
   "dependencies": {
+    "@slack/bolt": "^3.12.1",
+    "dotenv": "^16.0.3",
     "vite-node": "^0.24.5"
   }
 }

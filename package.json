@@ -1,0 +1,6 @@
+{
+	"dependencies": {
+		"botkit": "^4.15.0",
+		"vite-node": "^0.24.5"
+	}
+}

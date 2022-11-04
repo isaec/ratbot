@@ -1,8 +1,25 @@
 import { assert, describe, expect, test } from "vitest";
-import { formattedDataArrayToString } from "./dataFormatter";
+import { formatData, formattedDataArrayToString } from "./dataFormatter";
 import { getAllLines, setToSortedArray } from "./getAllLines";
+import { generate, optional } from "generate-combinations";
+import { PurchaseRequestData } from "./gsheetReader";
 
-console.log();
+describe("formatData", () => {
+  test.each(
+    generate<PurchaseRequestData>({
+      "Requestor Name": optional("ian"),
+      Supplier: optional("andy mark"),
+      "Price Per": optional("$9.99"),
+      Qty: optional("1"),
+      "Total Price (no tax)": optional("9.99"),
+      "Price + Tax": optional("10.73"),
+      Category: optional("FRC Robots"),
+      Comments: optional("this is a comment"),
+    })
+  )("formatData(%s)", (data: PurchaseRequestData) => {
+    expect(formatData(data)).toMatchSnapshot();
+  });
+});
 
 describe("formattedDataArrayToString", () => {
   test.each([

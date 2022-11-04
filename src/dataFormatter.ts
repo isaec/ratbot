@@ -13,29 +13,27 @@ const displayedKeys: PurchaseRequestKeys[] = [
   "Comments",
 ];
 
+const md = (str: string) => ({
+  type: "mrkdwn",
+  text: str,
+});
+
+const divider = () => ({ type: "divider" });
+
 export const formatData = (data: PurchaseRequestData) => [
   {
     type: "section",
-    text: {
-      type: "mrkdwn",
-      text: `*${r(data["Line #"])}:* ${r(data["Item"])}`,
-    },
-    fields: displayedKeys.map((key) => ({
-      type: "mrkdwn",
-      text: `*${key}:* ${r(data[key])}`,
-    })),
+    text: md(`*${r(data["Line #"])}:* ${r(data["Item"])}`),
+    fields: displayedKeys.map((key) => md(`*${key}:* ${r(data[key])}`)),
   },
   {
     type: "section",
-    text: {
-      type: "mrkdwn",
-      text: `*URL:* ${r(data["URL"])}`,
-    },
+    text: md(`*URL:* ${r(data["URL"])}`),
   },
 ];
 
 export const formatDataArray = (dataArray: PurchaseRequestData[]) =>
-  dataArray.flatMap((data) => [...formatData(data), { type: "divider" }]);
+  dataArray.flatMap((data) => [...formatData(data), divider()]);
 
 export const formattedDataArrayToString = (
   data: ReturnType<typeof formatDataArray>

@@ -36,3 +36,24 @@ export const formatData = (data: PurchaseRequestData) => [
 
 export const formatDataArray = (dataArray: PurchaseRequestData[]) =>
   dataArray.flatMap((data) => [...formatData(data), { type: "divider" }]);
+
+export const formattedDataArrayToString = (
+  data: ReturnType<typeof formatDataArray>
+) => {
+  let str = "";
+  for (const block of data) {
+    if (block.type === "section") {
+      if (block.text !== undefined && typeof block.text.text === "string") {
+        str += block.text.text + "\n";
+      }
+      if (block.fields) {
+        for (const field of block.fields) {
+          str += field.text + "\n";
+        }
+      }
+    } else if (block.type === "divider") {
+      str += "----\n";
+    }
+  }
+  return str;
+};

@@ -1,6 +1,10 @@
 import { App } from "@slack/bolt";
 import * as dotenv from "dotenv";
-import { formatData, formatDataArray } from "./dataFormatter";
+import {
+  formatData,
+  formatDataArray,
+  formattedDataArrayToString,
+} from "./dataFormatter";
 import { accumulate, getAllLines } from "./getAllLines";
 import { readSheetLine } from "./gsheetReader";
 
@@ -28,12 +32,29 @@ app.message(/lines?\s*\d+/, async ({ message, say }) => {
   // format the data
   const formattedData = formatDataArray(lineData);
 
+  // make string version of data
+  const str = formattedDataArrayToString(formattedData);
+
   await say({
     blocks: formattedData,
     thread_ts: message.ts,
+    text: str,
   });
 });
 
 await app.start(process.env.PORT || 3000).then(() => {
   console.log("⚡️ Bolt app is running!");
 });
+function formatDataArrayToString(
+  formattedData: (
+    | {
+        type: string;
+        text: { type: string; text: string };
+        fields: { type: string; text: string }[];
+      }
+    | { type: string; text: { type: string; text: string }; fields?: undefined }
+    | { type: string }
+  )[]
+) {
+  throw new Error("Function not implemented.");
+}

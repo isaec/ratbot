@@ -18,7 +18,7 @@ const headerRowIndex = parseInt(process.env.GSHEET_HEADER_ROW ?? "1");
 const headerRow = await sheet.loadHeaderRow(headerRowIndex);
 
 // /^\s+(?:'|\s)([^':]*).*/gm
-type PurchaseRequestKeys =
+export type PurchaseRequestKeys =
   | "Line #"
   | "Status"
   | "Request Date"

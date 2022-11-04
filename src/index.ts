@@ -45,16 +45,3 @@ app.message(/lines?\s*\d+/, async ({ message, say }) => {
 await app.start(process.env.PORT || 3000).then(() => {
   console.log("⚡️ Bolt app is running!");
 });
-function formatDataArrayToString(
-  formattedData: (
-    | {
-        type: string;
-        text: { type: string; text: string };
-        fields: { type: string; text: string }[];
-      }
-    | { type: string; text: { type: string; text: string }; fields?: undefined }
-    | { type: string }
-  )[]
-) {
-  throw new Error("Function not implemented.");
-}

@@ -18,19 +18,28 @@ type MarkdownElement = {
   text: string;
 };
 
+type Divider = { type: "divider" };
+type Section = {
+  type: "section";
+  text: MarkdownElement;
+  fields?: MarkdownElement[];
+};
+
 const md = (str: string): MarkdownElement => ({
   type: "mrkdwn",
   text: str,
 });
 
-const section = (text: MarkdownElement, fields?: MarkdownElement[]) =>
+const section = (text: MarkdownElement, fields?: MarkdownElement[]): Section =>
   fields === undefined
     ? { type: "section", text }
     : { type: "section", text, fields };
 
-const divider = () => ({ type: "divider" });
+const divider = (): Divider => ({ type: "divider" });
 
-export const formatData = (data: PurchaseRequestData) => [
+type SlackBlock = Array<Divider | Section>;
+
+export const formatData = (data: PurchaseRequestData): SlackBlock => [
   section(
     md(`*${r(data["Line #"])}:* ${r(data["Item"])}`),
     displayedKeys.map((key) => md(`*${key}:* ${r(data[key])}`))
@@ -38,8 +47,11 @@ export const formatData = (data: PurchaseRequestData) => [
   section(md(`*URL:* ${r(data["URL"])}`)),
 ];
 
-export const formatDataArray = (dataArray: PurchaseRequestData[]) =>
-  dataArray.flatMap((data) => [...formatData(data), divider()]);
+export const formatDataArray = (
+  dataArray: PurchaseRequestData[]
+): SlackBlock => [
+  ...dataArray.flatMap((data) => [...formatData(data), divider()]),
+];
 
 // hacky function
 export const formattedDataArrayToString = (

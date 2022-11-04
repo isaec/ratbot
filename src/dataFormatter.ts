@@ -13,28 +13,35 @@ const displayedKeys: PurchaseRequestKeys[] = [
   "Comments",
 ];
 
-const md = (str: string) => ({
+type MarkdownElement = {
+  type: "mrkdwn";
+  text: string;
+};
+
+const md = (str: string): MarkdownElement => ({
   type: "mrkdwn",
   text: str,
 });
 
+const section = (text: MarkdownElement, fields?: MarkdownElement[]) =>
+  fields === undefined
+    ? { type: "section", text }
+    : { type: "section", text, fields };
+
 const divider = () => ({ type: "divider" });
 
 export const formatData = (data: PurchaseRequestData) => [
-  {
-    type: "section",
-    text: md(`*${r(data["Line #"])}:* ${r(data["Item"])}`),
-    fields: displayedKeys.map((key) => md(`*${key}:* ${r(data[key])}`)),
-  },
-  {
-    type: "section",
-    text: md(`*URL:* ${r(data["URL"])}`),
-  },
+  section(
+    md(`*${r(data["Line #"])}:* ${r(data["Item"])}`),
+    displayedKeys.map((key) => md(`*${key}:* ${r(data[key])}`))
+  ),
+  section(md(`*URL:* ${r(data["URL"])}`)),
 ];
 
 export const formatDataArray = (dataArray: PurchaseRequestData[]) =>
   dataArray.flatMap((data) => [...formatData(data), divider()]);
 
+// hacky function
 export const formattedDataArrayToString = (
   data: ReturnType<typeof formatDataArray>
 ) => {

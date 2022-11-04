@@ -4,6 +4,9 @@ import * as serviceAccount from "../service_account.json";
 dotenv.config();
 
 const doc = new GoogleSpreadsheet(process.env.GSHEET_SHEET_ID);
+
+console.log("serviceAccount.client_email", serviceAccount.client_email);
+
 await doc.useServiceAccountAuth({
   client_email: serviceAccount.client_email,
   private_key: serviceAccount.private_key,
@@ -15,7 +18,7 @@ const sheet = await doc.sheetsByTitle[
 
 const headerRowIndex = parseInt(process.env.GSHEET_HEADER_ROW ?? "1");
 
-const headerRow = await sheet.loadHeaderRow(headerRowIndex);
+await sheet.loadHeaderRow(headerRowIndex);
 
 // /^\s+(?:'|\s)([^':]*).*/gm
 export type PurchaseRequestKeys =

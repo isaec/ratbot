@@ -40,7 +40,7 @@ type PurchaseRequestKeys =
   | "Category"
   | "Comments";
 
-type PurchaseRequestData = Partial<Record<PurchaseRequestKeys, string>>;
+export type PurchaseRequestData = Partial<Record<PurchaseRequestKeys, string>>;
 
 type PurchaseRequestRow = GoogleSpreadsheetRow & PurchaseRequestData;
 
@@ -52,7 +52,9 @@ const getRow = async (rowNumber: number) => {
   return rows[0] as PurchaseRequestRow;
 };
 
-export const readLine = async (line: number) => {
+export const readSheetLine = async (
+  line: number
+): Promise<PurchaseRequestData> => {
   const row = await getRow(line);
-  return 3;
+  return row;
 };

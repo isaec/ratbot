@@ -14,12 +14,15 @@ const app = new App({
 });
 
 app.message(/lines?\s*\d+/, async ({ message, say }) => {
+  console.log(`message detected in ${message.channel}`);
+  if (message.channel !== process.env.SLACK_PURCHASE_CHANNEL_ID) return;
+
   const lines = getAllLines(message.text);
   if (lines.size === 0) return;
 
   // fetch line data from gsheet
   const lineData = await Promise.all(
-    accumulate(lines.values()).map(readSheetLine)
+    accumulate(lines.values()).sort().map(readSheetLine)
   );
 
   // format the data

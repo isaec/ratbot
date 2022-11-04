@@ -35,6 +35,4 @@ export const formatData = (data: PurchaseRequestData) => [
 ];
 
 export const formatDataArray = (dataArray: PurchaseRequestData[]) =>
-  dataArray
-    .flatMap((data) => [...formatData(data), { type: "divider" }])
-    .slice(0, -1);
+  dataArray.flatMap((data) => [...formatData(data), { type: "divider" }]);

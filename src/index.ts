@@ -27,6 +27,7 @@ app.message(/lines?\s*\d+/, async ({ message, say }) => {
 
   await say({
     blocks: formattedData,
+    thread_ts: message.ts,
   });
 });
 

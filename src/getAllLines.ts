@@ -33,7 +33,10 @@ export const getAllLines = (text: string): Set<number> => {
     if (typeof match[1] === "string" && typeof match[2] === "string") {
       const start = parseInt(match[1]);
       const end = parseInt(match[2]);
-      for (let i = start; i <= end; i++) lines.add(i);
+
+      const largest = Math.max(start, end);
+      const smallest = Math.min(start, end);
+      for (let i = smallest; i <= largest; i++) lines.add(i);
     }
   }
   for (const match of text.matchAll(lineAndLine)) {

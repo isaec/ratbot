@@ -18,9 +18,9 @@ console.log(
 
 await doc.useServiceAccountAuth({
   client_email: assertDefined(process.env.GSHEET_SERVICE_ACCOUNT_CLIENT_EMAIL),
-  private_key: assertDefined(
-    process.env.GSHEET_SERVICE_ACCOUNT_PRIVATE_KEY
-  ).replaceAll(`\\n`, `\n`),
+  private_key: atob(
+    assertDefined(process.env.GSHEET_SERVICE_ACCOUNT_PRIVATE_KEY_BTOA)
+  ),
 });
 await doc.loadInfo();
 const sheet = await doc.sheetsByTitle[

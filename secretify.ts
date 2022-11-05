@@ -11,10 +11,10 @@ const fsFile = await Deno.open(envPath, { create: true, append: true });
 
 for (const [key, value] of Object.entries(fileObj)) {
   console.log({ key, value });
-  const envVar = `${upperCasePrefixed(key)}='${value.replaceAll(
-    `\n`,
-    `\\n`
-  )}'\n`;
+  const needBase64 = value.includes("\n");
+  const envVar = `${upperCasePrefixed(key)}${needBase64 ? "_BTOA" : ""}=${
+    needBase64 ? btoa(value) : value
+  }\n`;
   await Deno.write(fsFile.rid, new TextEncoder().encode(envVar));
 }
 

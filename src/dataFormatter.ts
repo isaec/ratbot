@@ -80,6 +80,13 @@ export const formatDataArray = (
           .map((price) => parseFloat(price.replace("$", "")))
           .reduce((a, b) => a + b, 0)}`
       ),
+      md(
+        `*Total Qty:* ${dataArray
+          .map((data) => data["Qty"])
+          .filter(defined)
+          .map(toInt)
+          .reduce((a, b) => a + b, 0)}`
+      ),
     ]
   ),
 ];

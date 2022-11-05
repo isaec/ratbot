@@ -26,7 +26,9 @@ app.message(/lines?\s*\d+/, async ({ message, say }) => {
 
   // fetch line data from gsheet
   const lineData = await Promise.all(
-    accumulate(lines.values()).sort().map(readSheetLine)
+    accumulate(lines.values())
+      .sort((a, b) => a - b)
+      .map(readSheetLine)
   );
 
   // format the data

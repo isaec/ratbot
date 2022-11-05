@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["mrkdwn", "regexes"]
+  "cSpell.words": ["mrkdwn", "regexes"],
+  "deno.enablePaths": ["secretify.ts"]
 }

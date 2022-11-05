@@ -1,15 +1,26 @@
 import * as dotenv from "dotenv";
 import { GoogleSpreadsheet, GoogleSpreadsheetRow } from "google-spreadsheet";
-import * as serviceAccount from "../service_account.json";
 dotenv.config();
 
 const doc = new GoogleSpreadsheet(process.env.GSHEET_SHEET_ID);
 
-console.log("serviceAccount.client_email", serviceAccount.client_email);
+const assertDefined = <T>(value: T | undefined): T => {
+  if (value === undefined) {
+    throw new Error("Value is undefined");
+  }
+  return value;
+};
+
+console.log(
+  "serviceAccount.client_email",
+  process.env.GSHEET_SERVICE_ACCOUNT_CLIENT_EMAIL
+);
 
 await doc.useServiceAccountAuth({
-  client_email: serviceAccount.client_email,
-  private_key: serviceAccount.private_key,
+  client_email: assertDefined(process.env.GSHEET_SERVICE_ACCOUNT_CLIENT_EMAIL),
+  private_key: assertDefined(
+    process.env.GSHEET_SERVICE_ACCOUNT_PRIVATE_KEY
+  ).replaceAll(`\\n`, `\n`),
 });
 await doc.loadInfo();
 const sheet = await doc.sheetsByTitle[

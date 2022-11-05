@@ -3,6 +3,7 @@ import {
   formatData,
   formattedDataArrayToString,
   numberListFormatter,
+  joinList,
 } from "./dataFormatter";
 import { getAllLines, setToSortedArray } from "./getAllLines";
 import { generate, optional } from "generate-combinations";
@@ -50,5 +51,16 @@ describe("numberListFormatter", () => {
     [numbers(1, 3, 4, 5, 6, 7, 8, 9, 10, 11), "1, 3-11"],
   ])("formats array of %o to %s", ({ numbers }, expected) => {
     expect(numberListFormatter(numbers)).toBe(expected);
+  });
+});
+
+describe("joinList", () => {
+  it.each([
+    [[1, 2, 3], "1, 2 and 3"],
+    [[1, 2, 3, 4], "1, 2, 3 and 4"],
+    [[1, 2, 3, 4, 5], "1, 2, 3, 4 and 5"],
+    [[1, "3"], "1 and 3"],
+  ])(`joinList(%o)`, (arr, expected) => {
+    expect(joinList(arr)).toBe(expected);
   });
 });

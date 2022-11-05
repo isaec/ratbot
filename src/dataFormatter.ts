@@ -47,6 +47,24 @@ export const formatData = (data: PurchaseRequestData): SlackBlock => [
   section(md(`*URL:* ${r(data["URL"])}`)),
 ];
 
+export const joinList = (
+  list: { toString: () => string }[],
+  joiner = ", ",
+  finalJoiner = " and ",
+  finalJoinerMinLength = 2
+): string => {
+  if (list.length === 0) return "";
+
+  const stringList = list.map((x) => x.toString());
+
+  if (stringList.length < finalJoinerMinLength || finalJoinerMinLength < 2)
+    return stringList.join(joiner);
+
+  return `${stringList
+    .slice(0, -1)
+    .join(joiner)}${finalJoiner}${stringList.slice(-1)}`;
+};
+
 export const numberListFormatter = (numbers: number[]): string => {
   const sorted = numbers.sort((a, b) => a - b);
   const elements: Array<number | string> = [];
@@ -65,7 +83,7 @@ export const numberListFormatter = (numbers: number[]): string => {
     }
     currentStart = undefined;
   }
-  return elements.join(", ");
+  return joinList(elements, ", ", " and ", 3);
 };
 
 export const formatDataArray = (

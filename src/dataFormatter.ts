@@ -1,7 +1,7 @@
 import { PurchaseRequestData, PurchaseRequestKeys } from "./gsheetReader";
 import { formatRange } from "./stringFormatter";
 
-const r = (val: string | undefined) => val ?? "N/A";
+const read = (val: string | undefined) => val ?? "N/A";
 
 const displayedKeys: PurchaseRequestKeys[] = [
   "Requestor Name",
@@ -42,10 +42,12 @@ type SlackBlock = Array<Divider | Section>;
 
 export const formatData = (data: PurchaseRequestData): SlackBlock => [
   section(
-    md(`*${r(data["Line #"])}:* ${r(data["Item"])}`),
-    displayedKeys.map((key) => md(`*${key}:* ${r(data[key])}`))
+    md(`*${read(data["Line #"])}:* ${read(data["Item"])}`),
+    displayedKeys
+      .filter((key) => data[key] !== undefined)
+      .map((key) => md(`*${key}:* ${data[key]}`))
   ),
-  section(md(`*URL:* ${r(data["URL"])}`)),
+  section(md(`*URL:* ${read(data["URL"])}`)),
 ];
 
 const defined = <T>(x: T | undefined): x is T => x !== undefined;

@@ -8,6 +8,7 @@ import {
 import { accumulate, getAllLines } from "./getAllLines";
 import { readSheetLine } from "./gsheetReader";
 import { createPageFromMessage } from "./wiki";
+import { getTitleFromMessage, wikithisRegex } from "./wikithisCommand";
 
 dotenv.config();
 
@@ -53,8 +54,21 @@ app.message(/lines?\s*\d+/, async ({ message, say }) => {
   }
 });
 
-app.message(/^\.wikithis/, async ({ message, say }) => {
-  say(`Attempting to create page with title "${message.text}"`);
+app.message(wikithisRegex, async ({ message, say }) => {
+  console.log("ts", message.ts);
+  console.log(`wikithis command detected in ${message.channel}`);
+  const title = getTitleFromMessage(message.text);
+  if (title === undefined) {
+    await say({
+      text: `message should be of the form ".wikithis <title>" in a thread`,
+      thread_ts: message.ts,
+    });
+    return;
+  }
+  await say({
+    text: `Attempting to create page with title "${title}"...`,
+    thread_ts: message.ts,
+  });
 });
 
 await app.start(process.env.PORT || 3000).then(() => {

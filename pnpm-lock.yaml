@@ -8,6 +8,7 @@ specifiers:
   google-spreadsheet: ^3.3.0
   vite-node: ^0.24.5
   vitest: ^0.24.5
+  wikiapi: ^1.19.4
 
 dependencies:
   '@slack/bolt': 3.12.1
@@ -15,6 +16,7 @@ dependencies:
   dotenv: 16.0.3
   google-spreadsheet: 3.3.0
   vite-node: 0.24.5
+  wikiapi: 1.19.4
 
 devDependencies:
   generate-combinations: 1.0.1
@@ -353,6 +355,11 @@ packages:
     dependencies:
       function-bind: 1.1.1
       get-intrinsic: 1.1.3
+    dev: false
+
+  /cejs/4.5.4:
+    resolution: {integrity: sha512-18NfI9pUNPi4Sed/BpwmqGWw+SnPou+TNMRSszjBVr43lbZ8Eg84z8tMLYYkXgR1b65Ck4W8IpvSA8rcm+ANOQ==}
+    engines: {node: '>=0.10'}
     dev: false
 
   /chai/4.3.6:
@@ -1814,6 +1821,13 @@ packages:
       is-number-object: 1.0.7
       is-string: 1.0.7
       is-symbol: 1.0.4
+    dev: false
+
+  /wikiapi/1.19.4:
+    resolution: {integrity: sha512-gh6M026re+FxkQS6DEjTTii/zs3VGvCT8HYkIG17NsNGPW9hiZT8uWovU/uu0JUKZ3OXdy+JD94Jk4ko++AZ8Q==}
+    engines: {node: '>=12.0'}
+    dependencies:
+      cejs: 4.5.4
     dev: false
 
   /ws/7.5.9:

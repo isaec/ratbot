@@ -7,6 +7,7 @@ import {
 } from "./dataFormatter";
 import { accumulate, getAllLines } from "./getAllLines";
 import { readSheetLine } from "./gsheetReader";
+import { createPageFromMessage } from "./wiki";
 
 dotenv.config();
 
@@ -50,6 +51,10 @@ app.message(/lines?\s*\d+/, async ({ message, say }) => {
       thread_ts: message.ts,
     });
   }
+});
+
+app.message(/^\.wikithis/, async ({ message, say }) => {
+  say(`Attempting to create page with title "${message.text}"`);
 });
 
 await app.start(process.env.PORT || 3000).then(() => {

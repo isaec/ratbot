@@ -10,7 +10,8 @@
     "@types/google-spreadsheet": "^3.3.0",
     "dotenv": "^16.0.3",
     "google-spreadsheet": "^3.3.0",
-    "vite-node": "^0.24.5"
+    "vite-node": "^0.24.5",
+    "wikiapi": "^1.19.4"
   },
   "devDependencies": {
     "generate-combinations": "^1.0.1",

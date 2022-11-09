@@ -61,3 +61,6 @@ export const createPageFromMessage = async (
   console.log("create page result", { pageTitle, message, result });
   return result;
 };
+
+export const getUrlFromTitle = (title: string): string =>
+  `https://www.team5026.com/index.php/${title.replace(/ /g, "_")}`;

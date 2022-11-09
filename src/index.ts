@@ -4,10 +4,11 @@ import {
   formatData,
   formatDataArray,
   formattedDataArrayToString,
+  url,
 } from "./dataFormatter";
 import { accumulate, getAllLines } from "./getAllLines";
 import { readSheetLine } from "./gsheetReader";
-import { createPageFromMessage } from "./wiki";
+import { createPageFromMessage, creationResult, getUrlFromTitle } from "./wiki";
 import * as wikithis from "./wikithisCommand";
 
 dotenv.config();
@@ -55,7 +56,7 @@ app.message(/lines?\s*\d+/, async ({ message, say }) => {
 });
 
 app.message(wikithis.wikithisRegex, async ({ message, say }) => {
-  console.log("ts", message.ts);
+  console.log("msg", message);
   console.log(`wikithis command detected in ${message.channel}`);
   const title = wikithis.getTitleFromMessage(message.text);
   if (title === undefined) {
@@ -69,6 +70,60 @@ app.message(wikithis.wikithisRegex, async ({ message, say }) => {
     text: `Attempting to create page with title "${title}"...`,
     thread_ts: message.ts,
   });
+  const thread = await app.client.conversations.replies({
+    token: process.env.SLACK_BOT_TOKEN,
+    channel: message.channel,
+    ts: message.thread_ts,
+  });
+  if (thread.ok === false || thread.messages === undefined) {
+    await say({
+      text: `Error fetching thread. Details have been logged.`,
+      thread_ts: message.ts,
+    });
+    console.error("error fetching thread", { thread });
+    return;
+  }
+  // filter and combine messages
+  const messages = thread.messages
+    .filter(
+      (m) => m.text?.startsWith(".wikithis") === false && m.bot_id === undefined
+    )
+    .map((m) => m.text)
+    .join("\n\n");
+
+  const result = await createPageFromMessage(title, messages);
+  // repetitive but it's fine
+  switch (result) {
+    case creationResult.PageExists: {
+      await say({
+        text: `Page with title "${title}" already exists ${url(
+          "here",
+          getUrlFromTitle(title)
+        )}. Details have been logged.`,
+        thread_ts: message.ts,
+      });
+      console.error("page already exists", { title });
+      return;
+    }
+    case creationResult.Error: {
+      await say({
+        text: `Error creating page with title "${title}". Details have been logged.`,
+        thread_ts: message.ts,
+      });
+      console.error("error creating page", { title });
+      return;
+    }
+    case creationResult.Success: {
+      await say({
+        text: `Page with title ${url(
+          title,
+          getUrlFromTitle(title)
+        )} created successfully.`,
+        thread_ts: message.ts,
+      });
+      return;
+    }
+  }
 });
 
 await app.start(process.env.PORT || 3000).then(() => {

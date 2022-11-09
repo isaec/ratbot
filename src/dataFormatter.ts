@@ -40,7 +40,7 @@ const divider = (): Divider => ({ type: "divider" });
 
 const stringProbablyUrlRegex = /^https?:\/\//;
 
-const url = (text: string, url: string | undefined) =>
+export const url = (text: string, url: string | undefined) =>
   url === undefined || !stringProbablyUrlRegex.test(url)
     ? text
     : `<${url}|${text}>`;

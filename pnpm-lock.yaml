@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@slack/bolt': ^3.12.1
   '@types/google-spreadsheet': ^3.3.0
+  ap-style-title-case: ^1.1.2
   dotenv: ^16.0.3
   generate-combinations: ^1.0.1
   google-spreadsheet: ^3.3.0
@@ -13,6 +14,7 @@ specifiers:
 dependencies:
   '@slack/bolt': 3.12.1
   '@types/google-spreadsheet': 3.3.0
+  ap-style-title-case: 1.1.2
   dotenv: 16.0.3
   google-spreadsheet: 3.3.0
   vite-node: 0.24.5
@@ -258,6 +260,10 @@ packages:
       debug: 4.3.4
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /ap-style-title-case/1.1.2:
+    resolution: {integrity: sha512-8k5jYIf7b+glU3f16eEw5RLdyhXjVWkLYy7XDYSw77a4CUUfGge5c9M/2Obbft5AhZD3RTkCbf3/LAVguLFMfQ==}
     dev: false
 
   /array-flatten/1.1.1:

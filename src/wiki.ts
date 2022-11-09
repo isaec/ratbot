@@ -48,6 +48,7 @@ const generatePageContent = (data: string, catagories: string[] = []): string =>
   appendCatagories(
     `== Message Data ==
 ${data}
+
 == What is this? ==
 This page was created by the ratbot. It contains the data from a message in the slack channel. You should clean it up! When you do, remove this message.`,
     [...catagories, "Ratbot Auto-Generated Pages"]

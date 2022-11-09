@@ -24,6 +24,7 @@ const createPage = async (
   page: string,
   content: string
 ): Promise<CreationResult> => {
+  // return creationResult.Success;
   try {
     if (await pageExists(page)) return creationResult.PageExists;
     // page doesn't exist, create it
@@ -54,9 +55,13 @@ This page was created by the ratbot. It contains the data from a message in the 
 
 export const createPageFromMessage = async (
   pageTitle: string,
-  message: string
+  message: string,
+  catagories: string[] = []
 ): Promise<CreationResult> => {
-  const result = createPage(pageTitle, generatePageContent(message));
+  const result = createPage(
+    pageTitle,
+    generatePageContent(message, catagories)
+  );
   await result;
   console.log("create page result", { pageTitle, message, result });
   return result;

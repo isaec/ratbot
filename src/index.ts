@@ -91,7 +91,13 @@ app.message(wikithis.wikithisRegex, async ({ message, say }) => {
     .map((m) => m.text)
     .join("\n\n");
 
-  const result = await createPageFromMessage(title, messages);
+  const catagories = wikithis.getCatagories({
+    title,
+  });
+
+  console.log("catagories", catagories);
+
+  const result = await createPageFromMessage(title, messages, catagories);
   // repetitive but it's fine
   switch (result) {
     case creationResult.PageExists: {

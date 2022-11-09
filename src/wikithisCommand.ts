@@ -10,3 +10,9 @@ export const getTitleFromMessage = (message: string) => {
   if (match === null) return undefined;
   return titleCase(match[1]);
 };
+
+export const getCatagories = ({ title }) => {
+  const catagories: string[] = [];
+  if (containsHowTo.test(title)) catagories.push("How To");
+  return catagories;
+};

@@ -38,8 +38,12 @@ const section: {
 
 const divider = (): Divider => ({ type: "divider" });
 
+const stringProbablyUrlRegex = /^https?:\/\//;
+
 const url = (text: string, url: string | undefined) =>
-  url === undefined ? text : `<${url}|${text}>`;
+  url === undefined || !stringProbablyUrlRegex.test(url)
+    ? text
+    : `<${url}|${text}>`;
 
 type SlackBlock = Array<Divider | Section>;
 

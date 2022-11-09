@@ -38,15 +38,14 @@ const section: {
 
 const divider = (): Divider => ({ type: "divider" });
 
+const url = (text: string, url: string | undefined) =>
+  url === undefined ? text : `<${url}|${text}>`;
+
 type SlackBlock = Array<Divider | Section>;
 
 export const formatData = (data: PurchaseRequestData): SlackBlock => [
   section([
-    md(
-      `*${read(data["Line #"])}:* <${data["URL"]}|${read(
-        data["Item"]
-      )}> from ${read(data["Supplier"])}`
-    ),
+    md(`*${read(data["Line #"])}:* ${url(read(data["Item"]), data["URL"])}`),
     ...displayedKeys
       .filter((key) => data[key] !== undefined)
       .map((key) => md(`*${key}:* ${data[key]}`)),

@@ -13,6 +13,8 @@ describe("formatData", () => {
       Qty: optional("1"),
       "Total Price (no tax)": optional("9.99"),
       "Price + Tax": optional("10.73"),
+      "Line #": "42",
+      URL: optional("https://www.example.com"),
       Category: optional("FRC Robots"),
       Comments: optional("this is a comment"),
     })

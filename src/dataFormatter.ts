@@ -64,6 +64,11 @@ const transformer =
     fn(arg0);
 const toInt = transformer(parseInt);
 
+const moneyFormatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+});
+
 export const formatDataArray = (
   dataArray: PurchaseRequestData[]
 ): SlackBlock => [
@@ -80,11 +85,13 @@ export const formatDataArray = (
     ),
     [
       md(
-        `*Total Price + Tax:* ${dataArray
-          .map((data) => data["Price + Tax"])
-          .filter(defined)
-          .map((price) => parseFloat(price.replace("$", "")))
-          .reduce((a, b) => a + b, 0)}`
+        `*Total Price + Tax:* ${moneyFormatter.format(
+          dataArray
+            .map((data) => data["Price + Tax"])
+            .filter(defined)
+            .map((price) => parseFloat(price.replace("$", "")))
+            .reduce((a, b) => a + b, 0)
+        )}`
       ),
     ]
   ),

@@ -3,16 +3,7 @@ import { formatRange } from "./stringFormatter";
 
 const read = (val: string | undefined) => val ?? "N/A";
 
-const displayedKeys: PurchaseRequestKeys[] = [
-  "Requestor Name",
-  "Supplier",
-  "Price Per",
-  "Qty",
-  "Total Price (no tax)",
-  "Price + Tax",
-  "Category",
-  "Comments",
-];
+const displayedKeys: PurchaseRequestKeys[] = ["Price Per", "Qty", "Comments"];
 
 type MarkdownElement = {
   type: "mrkdwn";
@@ -22,7 +13,7 @@ type MarkdownElement = {
 type Divider = { type: "divider" };
 type Section = {
   type: "section";
-  text: MarkdownElement;
+  text?: MarkdownElement;
   fields?: MarkdownElement[];
 };
 
@@ -31,23 +22,31 @@ const md = (str: string): MarkdownElement => ({
   text: str,
 });
 
-const section = (text: MarkdownElement, fields?: MarkdownElement[]): Section =>
-  fields === undefined
-    ? { type: "section", text }
-    : { type: "section", text, fields };
+const section: {
+  (fields: MarkdownElement[]): Section;
+  (text: MarkdownElement): Section;
+  (text: MarkdownElement, fields: MarkdownElement[]): Section;
+} = (
+  arg0: MarkdownElement | MarkdownElement[],
+  arg1?: MarkdownElement[]
+): Section =>
+  Array.isArray(arg0)
+    ? { type: "section", fields: arg0 }
+    : arg1 === undefined
+    ? { type: "section", text: arg0 }
+    : { type: "section", text: arg0, fields: arg1 };
 
 const divider = (): Divider => ({ type: "divider" });
 
 type SlackBlock = Array<Divider | Section>;
 
 export const formatData = (data: PurchaseRequestData): SlackBlock => [
-  section(
-    md(`*${read(data["Line #"])}:* ${read(data["Item"])}`),
-    displayedKeys
+  section([
+    md(`*${read(data["Line #"])}:* <${data["URL"]}|${read(data["Item"])}>`),
+    ...displayedKeys
       .filter((key) => data[key] !== undefined)
-      .map((key) => md(`*${key}:* ${data[key]}`))
-  ),
-  section(md(`*URL:* ${read(data["URL"])}`)),
+      .map((key) => md(`*${key}:* ${data[key]}`)),
+  ]),
 ];
 
 const defined = <T>(x: T | undefined): x is T => x !== undefined;
@@ -78,13 +77,6 @@ export const formatDataArray = (
           .map((data) => data["Price + Tax"])
           .filter(defined)
           .map((price) => parseFloat(price.replace("$", "")))
-          .reduce((a, b) => a + b, 0)}`
-      ),
-      md(
-        `*Total Qty:* ${dataArray
-          .map((data) => data["Qty"])
-          .filter(defined)
-          .map(toInt)
           .reduce((a, b) => a + b, 0)}`
       ),
     ]

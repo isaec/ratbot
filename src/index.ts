@@ -86,7 +86,7 @@ app.message(wikithis.wikithisRegex, async ({ message, say }) => {
   }
 
   // filter and combine messages
-  const messagesArray = await Promise.allSettled(
+  const messagesArray = await Promise.all(
     thread.messages
       .filter(
         (m) =>
@@ -99,7 +99,7 @@ app.message(wikithis.wikithisRegex, async ({ message, say }) => {
       )
   );
   console.log("messagesArray", messagesArray);
-  const messages = messagesArray.map((m) => m.value).join("\n\n");
+  const messages = messagesArray.join("\n\n");
   console.log("messages", messages);
 
   const catagories = wikithis.getCatagories({

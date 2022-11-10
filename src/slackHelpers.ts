@@ -34,23 +34,31 @@ type User = {
   team_id?: string;
 };
 
-type Immutable<T> = {
-  readonly [K in keyof T]: Immutable<T[K]>;
+/**
+ * ensure that cached objects are not modified
+ */
+type DeepReadonly<T> = {
+  readonly [K in keyof T]: DeepReadonly<T[K]>;
 };
 
-const userCache: Map<string, Immutable<User>> = new Map();
+const userCache: Map<string, DeepReadonly<User>> = new Map();
 
 export const getDetailsFromUserId = async (
   app: App<StringIndexed>,
   userId: string
 ) => {
-  if (userCache.has(userId)) return userCache.get(userId);
+  if (userCache.has(userId)) {
+    console.log("cache hit for user", { userId });
+    return userCache.get(userId);
+  }
   const result = await app.client.users.info({
     user: userId,
   });
   if (result.user === undefined) {
+    console.error("error fetching user", { result });
     return undefined;
   }
+  console.log("cache miss for user", { userId }, "caching");
   userCache.set(userId, result.user);
   return result.user;
 };

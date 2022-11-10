@@ -24,7 +24,7 @@ const createPage = async (
   page: string,
   content: string
 ): Promise<CreationResult> => {
-  // return creationResult.Success;
+  return creationResult.Success;
   try {
     if (await pageExists(page)) return creationResult.PageExists;
     // page doesn't exist, create it

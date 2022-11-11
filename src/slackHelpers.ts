@@ -43,22 +43,36 @@ type DeepReadonly<T> = {
 
 const userCache: Map<string, DeepReadonly<User>> = new Map();
 
+type Result = {
+  user?: DeepReadonly<User>;
+};
+
+const pendingUserCache: Map<string, Promise<Result>> = new Map();
+
 export const getDetailsFromUserId = async (
   app: App<StringIndexed>,
   userId: string
-) => {
+): Promise<DeepReadonly<User> | undefined> => {
   if (userCache.has(userId)) {
     console.log("cache hit for user", { userId });
-    return userCache.get(userId);
+    return userCache.get(userId)!;
   }
-  const result = await app.client.users.info({
+  if (pendingUserCache.has(userId)) {
+    console.log("cache hit on inflight request for user", { userId });
+    return (await pendingUserCache.get(userId))?.user;
+  }
+  const result = app.client.users.info({
     user: userId,
   });
-  if (result.user === undefined) {
-    console.error("error fetching user", { result });
+  pendingUserCache.set(userId, result);
+  console.log("cache miss for user, caching inflight request", { userId });
+  const finishedResult = await result;
+  if (finishedResult.user === undefined) {
+    console.error("error fetching user", { finishedResult });
     return undefined;
   }
-  console.log("cache miss for user", { userId }, "caching");
-  userCache.set(userId, result.user);
-  return result.user;
+  console.log("caching user", { userId });
+  userCache.set(userId, finishedResult.user);
+  pendingUserCache.delete(userId);
+  return finishedResult.user;
 };

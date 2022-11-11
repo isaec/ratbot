@@ -94,12 +94,17 @@ app.message(wikithis.wikithisRegex, async ({ message, say }) => {
       )
       .map(async (m) =>
         m.user === undefined
-          ? `unknown user: ${m.text}`
-          : `${(await getDetailsFromUserId(app, m.user))?.real_name}: ${m.text}`
+          ? `'''unknown user:''' ${m.text}`
+          : `'''${(await getDetailsFromUserId(app, m.user))?.real_name}:''' ${
+              m.text
+            }`
       )
   );
   console.log("messagesArray", messagesArray);
-  const messages = messagesArray.join("\n\n");
+  const messages = messagesArray
+    // show actual newlines for newline messages
+    .map((m) => m.replaceAll("\n", "\n\n"))
+    .join("\n\n");
   console.log("messages", messages);
 
   const catagories = wikithis.getCatagories({

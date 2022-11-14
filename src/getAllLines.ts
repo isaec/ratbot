@@ -3,6 +3,8 @@
  */
 const singleLine = /lines?\s(\d+)(?:\s(?!-|\d|and|&)|$)/g;
 
+const lineAndCharacter = /lines?\s(\d+)[,.;:!]/g;
+
 const singleHyphenatedLine = /lines?\s(\d+)-(?!\d)/g;
 
 const lineRange = /lines?\s(\d+)-(\d+)/g;
@@ -28,7 +30,14 @@ const runRegexes = (
 export const getAllLines = (text: string): Set<number> => {
   const lines: Set<number> = new Set();
   // run the regex that return a single line match
-  runRegexes(text, lines, singleLine, singleHyphenatedLine, finalValueOfGroup);
+  runRegexes(
+    text,
+    lines,
+    singleLine,
+    lineAndCharacter,
+    singleHyphenatedLine,
+    finalValueOfGroup
+  );
   for (const match of text.matchAll(lineRange)) {
     if (typeof match[1] === "string" && typeof match[2] === "string") {
       const start = parseInt(match[1]);

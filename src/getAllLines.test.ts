@@ -19,3 +19,15 @@ test.each([
 ])(`getAllLines(%s)`, (text) => {
   expect(setToSortedArray(getAllLines(text))).toMatchSnapshot();
 });
+
+test.each([
+  ["lines 1", [1]],
+  ["line 1", [1]],
+  [
+    `seeking approval for line 158, a fisheye lens camera with 180 degree fov
+this is based on balls missed in teleop during madtown, we can do better.`,
+    [158],
+  ],
+])(`getAllLines(%s)`, (text, expected) => {
+  expect(setToSortedArray(getAllLines(text))).toEqual(expected);
+});

@@ -10,6 +10,7 @@ import { accumulate, getAllLines } from "./getAllLines";
 import { readSheetLine } from "./gsheetReader";
 import { createPageFromMessage, creationResult, getUrlFromTitle } from "./wiki";
 import * as wikithis from "./wikithisCommand";
+import { getDetailsFromUserId } from "./slackHelpers";
 
 dotenv.config();
 
@@ -83,13 +84,28 @@ app.message(wikithis.wikithisRegex, async ({ message, say }) => {
     console.error("error fetching thread", { thread });
     return;
   }
+
   // filter and combine messages
-  const messages = thread.messages
-    .filter(
-      (m) => m.text?.startsWith(".wikithis") === false && m.bot_id === undefined
-    )
-    .map((m) => m.text)
+  const messagesArray = await Promise.all(
+    thread.messages
+      .filter(
+        (m) =>
+          m.text?.startsWith(".wikithis") === false && m.bot_id === undefined
+      )
+      .map(async (m) =>
+        m.user === undefined
+          ? `'''unknown user:''' ${m.text}`
+          : `'''${(await getDetailsFromUserId(app, m.user))?.real_name}:''' ${
+              m.text
+            }`
+      )
+  );
+  console.log("messagesArray", messagesArray);
+  const messages = messagesArray
+    // show actual newlines for newline messages
+    .map((m) => m.replaceAll("\n", "\n\n"))
     .join("\n\n");
+  console.log("messages", messages);
 
   const catagories = wikithis.getCatagories({
     title,

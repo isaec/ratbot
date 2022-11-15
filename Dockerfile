@@ -17,7 +17,8 @@ ENV NODE_ENV production
 
 COPY . .
 
-RUN npm install
+RUN npm install -g pnpm
+RUN pnpm install --frozen-lockfile
 FROM debian:bullseye
 
 LABEL fly_launch_runtime="nodejs"
@@ -29,4 +30,4 @@ WORKDIR /app
 ENV NODE_ENV production
 ENV PATH /root/.volta/bin:$PATH
 
-CMD [ "npm", "run", "start" ]
+CMD [ "pnpm", "run", "start" ]

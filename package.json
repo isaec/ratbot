@@ -12,12 +12,12 @@
     "dotenv": "^16.0.3",
     "google-spreadsheet": "^3.3.0",
     "vite-node": "^0.24.5",
-    "wikiapi": "^1.19.4"
+    "wikiapi": "^1.19.4",
+    "vite": "^3.2.4"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
     "generate-combinations": "^1.0.1",
-    "vite": "^3.2.4",
     "vitest": "^0.24.5"
   },
   "type": "module"

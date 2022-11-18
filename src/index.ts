@@ -15,7 +15,7 @@ import {
 } from "@helpers/wiki/createPage";
 import * as wikithis from "./commands/wikithisCommand";
 import { getDetailsFromUserId } from "@helpers/slack/users";
-import { DefinedChannel } from "@helpers/slack/channels";
+import { channelIterator, DefinedChannel } from "@helpers/slack/channels";
 
 dotenv.config();
 
@@ -157,7 +157,17 @@ await app.start(process.env.PORT || 3000).then(() => {
   console.log("⚡️ Bolt app is running!");
 });
 
-// join all channels
+// support fly io health checks
+const server = net.createServer((socket) => {
+  console.log("health check from fly.io");
+  socket.write("health check OK");
+  socket.pipe(socket);
+});
+
+if (process.env.SUPPORT_HEALTH_CHECK === "true")
+  server.listen(process.env.PORT || 3000);
+
+// join all channels, after setting up health checks
 const joinChannel = async (channel: DefinedChannel) => {
   if (channel.is_member || channel.is_archived) return false;
   await app.client.conversations.join({
@@ -171,13 +181,3 @@ setInterval(() => {
   console.log("daily channel join");
   channelIterator(app, joinChannel);
 }, 1000 * 60 * 60 * 24 /* 1 day */);
-
-// support fly io health checks
-const server = net.createServer((socket) => {
-  console.log("health check from fly.io");
-  socket.write("health check OK");
-  socket.pipe(socket);
-});
-
-if (process.env.SUPPORT_HEALTH_CHECK === "true")
-  server.listen(process.env.PORT || 3000);

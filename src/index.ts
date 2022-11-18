@@ -15,7 +15,7 @@ import {
 } from "@helpers/wiki/createPage";
 import * as wikithis from "./commands/wikithisCommand";
 import { getDetailsFromUserId } from "@helpers/slack/users";
-import { DefinedChannel } from "@helpers/slack/channels";
+import { channelIterator, DefinedChannel } from "@helpers/slack/channels";
 
 dotenv.config();
 

@@ -49,6 +49,8 @@ const doPaginate = async (
       console.log("iterating channel ", channel.name);
       if (await whenDoneIterator(channel))
         await sleep(parseInt(process.env.SLACK_CHANNEL_ITERATE_DELAY ?? "500"));
+      // sleep a little bit so we don't miss health checks
+      else await sleep(10);
     }
   } else {
     await doPaginate(app, next_cursor, whenDoneIterator);

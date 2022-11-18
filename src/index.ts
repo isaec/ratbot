@@ -164,7 +164,7 @@ const server = net.createServer((socket) => {
   socket.pipe(socket);
 });
 
-if (process.env.SUPPORT_HEALTH_CHECK === "true")
+if (process.env.SUPPORT_HEALTH_CHECK !== "false")
   server.listen(process.env.PORT || 3000);
 
 // join all channels, after setting up health checks

@@ -6,17 +6,17 @@ import {
   formatDataArray,
   formattedDataArrayToString,
   url,
-} from "./formatters/dataFormatter";
+} from "@formatters/dataFormatter";
 import { accumulate, getAllLines } from "./getAllLines";
 import { readSheetLine } from "./gsheetReader";
 import {
   createPageFromMessage,
   creationResult,
   getUrlFromTitle,
-} from "./helpers/wiki/createPage";
+} from "@helpers/wiki/createPage";
 import * as wikithis from "./commands/wikithisCommand";
-import { getDetailsFromUserId } from "./helpers/slack/users";
-import { channelIterator, DefinedChannel } from "./helpers/slack/channels";
+import { getDetailsFromUserId } from "@helpers/slack/users";
+import { channelIterator, DefinedChannel } from "@helpers/slack/channels";
 
 dotenv.config();
 

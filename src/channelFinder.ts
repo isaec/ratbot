@@ -11,15 +11,14 @@ dotenv.config();
 
 const channelMap = new Map<string, Channel>();
 
-channelMap.entries();
-
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const doPaginate = async (
   app: AppInstance,
   cursor: string | undefined,
-  whenDone: (channels: IterableIterator<[string, Channel]>) => Promise<void>
+  whenDoneIterator: (channel: Channel) => Promise<void>
 ) => {
+  console.log("doPaginate ", { cursor });
   const result = await app.client.conversations.list({
     token: process.env.SLACK_BOT_TOKEN,
     cursor,
@@ -33,10 +32,27 @@ const doPaginate = async (
     if (channel.id === undefined) continue;
     channelMap.set(channel.id, channel);
   }
+
+  await sleep(parseInt(process.env.SLACK_CHANNEL_PAGINATE_DELAY ?? "1000"));
+
   if (result.response_metadata?.next_cursor !== undefined) {
-    await sleep(1000);
-    await doPaginate(app, result.response_metadata.next_cursor, whenDone);
+    await doPaginate(
+      app,
+      result.response_metadata.next_cursor,
+      whenDoneIterator
+    );
   } else {
-    await whenDone(channelMap.entries());
+    for (const channel of channelMap.values()) {
+      console.log("iterating channel ", channel.name);
+      await whenDoneIterator(channel);
+      await sleep(parseInt(process.env.SLACK_CHANNEL_ITERATE_DELAY ?? "500"));
+    }
   }
+};
+
+export const channelIterator = async (
+  app: AppInstance,
+  iterator: (channel: Channel) => Promise<void>
+) => {
+  await doPaginate(app, undefined, iterator);
 };

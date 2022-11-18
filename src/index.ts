@@ -12,7 +12,7 @@ import { readSheetLine } from "./gsheetReader";
 import { createPageFromMessage, creationResult, getUrlFromTitle } from "./wiki";
 import * as wikithis from "./wikithisCommand";
 import { getDetailsFromUserId } from "./slackHelpers";
-import { channelIterator } from "./channelFinder";
+import { channelIterator, DefinedChannel } from "./channelFinder";
 
 dotenv.config();
 
@@ -155,8 +155,8 @@ await app.start(process.env.PORT || 3000).then(() => {
 });
 
 // join all channels
-const joinChannel = async (channel) => {
-  if (channel.is_member) return;
+const joinChannel = async (channel: DefinedChannel) => {
+  if (channel.is_member || channel.is_archived) return;
   await app.client.conversations.join({
     token: process.env.SLACK_BOT_TOKEN,
     channel: channel.id,

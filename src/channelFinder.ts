@@ -8,7 +8,7 @@ type RequireKey<Object, Key extends keyof Object> = Omit<Object, Key> &
 type Channel = Required<
   Awaited<ReturnType<AppInstance["client"]["conversations"]["list"]>>
 >["channels"][number];
-type DefinedChannel = RequireKey<Channel, "id">;
+export type DefinedChannel = RequireKey<Channel, "id">;
 
 dotenv.config();
 

@@ -3,20 +3,26 @@ import { StringIndexed } from "@slack/bolt/dist/types/helpers";
 import * as dotenv from "dotenv";
 
 type AppInstance = App<StringIndexed>;
+type RequireKey<Object, Key extends keyof Object> = Omit<Object, Key> &
+  Record<Key, NonNullable<Object[Key]>>;
 type Channel = Required<
   Awaited<ReturnType<AppInstance["client"]["conversations"]["list"]>>
 >["channels"][number];
+type DefinedChannel = RequireKey<Channel, "id">;
 
 dotenv.config();
 
-const channelMap = new Map<string, Channel>();
+const channelMap = new Map<string, DefinedChannel>();
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const isDefinedChannel = (channel: Channel): channel is DefinedChannel =>
+  channel.id !== undefined;
 
 const doPaginate = async (
   app: AppInstance,
   cursor: string | undefined,
-  whenDoneIterator: (channel: Channel) => Promise<void>
+  whenDoneIterator: (channel: DefinedChannel) => Promise<void>
 ) => {
   console.log("doPaginate ", { cursor });
   const result = await app.client.conversations.list({
@@ -29,30 +35,29 @@ const doPaginate = async (
     return;
   }
   for (const channel of result.channels ?? []) {
-    if (channel.id === undefined) continue;
-    channelMap.set(channel.id, channel);
+    if (isDefinedChannel(channel)) {
+      channelMap.set(channel.id, channel);
+    }
   }
 
   await sleep(parseInt(process.env.SLACK_CHANNEL_PAGINATE_DELAY ?? "1000"));
 
-  if (result.response_metadata?.next_cursor !== undefined) {
-    await doPaginate(
-      app,
-      result.response_metadata.next_cursor,
-      whenDoneIterator
-    );
-  } else {
+  const next_cursor = result.response_metadata?.next_cursor;
+
+  if (next_cursor === undefined || next_cursor === "") {
     for (const channel of channelMap.values()) {
       console.log("iterating channel ", channel.name);
       await whenDoneIterator(channel);
       await sleep(parseInt(process.env.SLACK_CHANNEL_ITERATE_DELAY ?? "500"));
     }
+  } else {
+    await doPaginate(app, next_cursor, whenDoneIterator);
   }
 };
 
 export const channelIterator = async (
   app: AppInstance,
-  iterator: (channel: Channel) => Promise<void>
+  iterator: (channel: DefinedChannel) => Promise<void>
 ) => {
   await doPaginate(app, undefined, iterator);
 };

@@ -180,4 +180,5 @@ const server = net.createServer((socket) => {
   socket.pipe(socket);
 });
 
-server.listen(process.env.PORT || 3000);
+if (process.env.SUPPORT_HEALTH_CHECK === "true")
+  server.listen(process.env.PORT || 3000);

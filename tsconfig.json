@@ -12,6 +12,8 @@
       "@commands/*": ["src/commands/*"],
       "@formatters/*": ["src/formatters/*"],
       "@helpers/*": ["src/helpers/*"]
-    }
+    },
+    "target": "esnext",
+    "moduleResolution": "node"
   }
 }

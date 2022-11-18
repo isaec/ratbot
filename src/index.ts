@@ -1,5 +1,5 @@
 import { App } from "@slack/bolt";
-import net from "net";
+import * as net from "net";
 import * as dotenv from "dotenv";
 import {
   formatData,

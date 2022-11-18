@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@slack/bolt': ^3.12.1
   '@types/google-spreadsheet': ^3.3.0
+  '@types/node': ^18.11.9
   ap-style-title-case: ^1.1.2
   dotenv: ^16.0.3
   generate-combinations: ^1.0.1
@@ -18,12 +19,13 @@ dependencies:
   ap-style-title-case: 1.1.2
   dotenv: 16.0.3
   google-spreadsheet: 3.3.0
-  vite-node: 0.24.5
+  vite-node: 0.24.5_@types+node@18.11.9
   wikiapi: 1.19.4
 
 devDependencies:
+  '@types/node': 18.11.9
   generate-combinations: 1.0.1
-  vite: 3.2.4
+  vite: 3.2.4_@types+node@18.11.9
   vitest: 0.24.5
 
 packages:
@@ -1721,7 +1723,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
-  /vite-node/0.24.5:
+  /vite-node/0.24.5_@types+node@18.11.9:
     resolution: {integrity: sha512-+xnJaYu1i+2eCsycRO2QF1vxne13b2nL6nF+O8EzdF/X+ohPujysjwij3ZbX3AZ+j8HWYzjlRlKPdlHVyaNzwQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -1729,7 +1731,7 @@ packages:
       debug: 4.3.4
       mlly: 0.5.16
       pathe: 0.2.0
-      vite: 3.2.4
+      vite: 3.2.4_@types+node@18.11.9
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -1739,38 +1741,6 @@ packages:
       - supports-color
       - terser
     dev: false
-
-  /vite/3.2.4:
-    resolution: {integrity: sha512-Z2X6SRAffOUYTa+sLy3NQ7nlHFU100xwanq1WDwqaiFiCe+25zdxP1TfCS5ojPV2oDDcXudHIoPnI1Z/66B7Yw==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      esbuild: 0.15.12
-      postcss: 8.4.18
-      resolve: 1.22.1
-      rollup: 2.79.1
-    optionalDependencies:
-      fsevents: 2.3.2
 
   /vite/3.2.4_@types+node@18.11.9:
     resolution: {integrity: sha512-Z2X6SRAffOUYTa+sLy3NQ7nlHFU100xwanq1WDwqaiFiCe+25zdxP1TfCS5ojPV2oDDcXudHIoPnI1Z/66B7Yw==}
@@ -1804,7 +1774,6 @@ packages:
       rollup: 2.79.1
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
 
   /vitest/0.24.5:
     resolution: {integrity: sha512-zw6JhPUHtLILQDe5Q39b/SzoITkG+R7hcFjuthp4xsi6zpmfQPOZcHodZ+3bqoWl4EdGK/p1fuMiEwdxgbGLOA==}

@@ -9,10 +9,14 @@ import {
 } from "./formatters/dataFormatter";
 import { accumulate, getAllLines } from "./getAllLines";
 import { readSheetLine } from "./gsheetReader";
-import { createPageFromMessage, creationResult, getUrlFromTitle } from "./wiki";
+import {
+  createPageFromMessage,
+  creationResult,
+  getUrlFromTitle,
+} from "./helpers/wiki/createPage";
 import * as wikithis from "./commands/wikithisCommand";
-import { getDetailsFromUserId } from "./slackHelpers";
-import { channelIterator, DefinedChannel } from "./channelFinder";
+import { getDetailsFromUserId } from "./helpers/slack/users";
+import { channelIterator, DefinedChannel } from "./helpers/slack/channels";
 
 dotenv.config();
 

@@ -1,4 +1,5 @@
 import { App } from "@slack/bolt";
+import net from "net";
 import * as dotenv from "dotenv";
 import {
   formatData,
@@ -11,6 +12,7 @@ import { readSheetLine } from "./gsheetReader";
 import { createPageFromMessage, creationResult, getUrlFromTitle } from "./wiki";
 import * as wikithis from "./wikithisCommand";
 import { getDetailsFromUserId } from "./slackHelpers";
+import { channelIterator } from "./channelFinder";
 
 dotenv.config();
 
@@ -151,3 +153,26 @@ app.message(wikithis.wikithisRegex, async ({ message, say }) => {
 await app.start(process.env.PORT || 3000).then(() => {
   console.log("⚡️ Bolt app is running!");
 });
+
+// join all channels
+const joinChannel = async (channel) => {
+  if (channel.is_member) return;
+  await app.client.conversations.join({
+    token: process.env.SLACK_BOT_TOKEN,
+    channel: channel.id,
+  });
+};
+channelIterator(app, joinChannel);
+setInterval(() => {
+  console.log("daily channel join");
+  channelIterator(app, joinChannel);
+}, 1000 * 60 * 60 * 24 /* 1 day */);
+
+// support fly io health checks
+const server = net.createServer((socket) => {
+  console.log("health check from fly.io");
+  socket.write("health check OK");
+  socket.pipe(socket);
+});
+
+server.listen(process.env.PORT || 3000);

@@ -2,7 +2,6 @@ import { App } from "@slack/bolt";
 import * as net from "net";
 import * as dotenv from "dotenv";
 import {
-  formatData,
   formatDataArray,
   formattedDataArrayToString,
   url,
@@ -16,7 +15,7 @@ import {
 } from "@helpers/wiki/createPage";
 import * as wikithis from "./commands/wikithisCommand";
 import { getDetailsFromUserId } from "@helpers/slack/users";
-import { channelIterator, DefinedChannel } from "@helpers/slack/channels";
+import { DefinedChannel } from "@helpers/slack/channels";
 
 dotenv.config();
 

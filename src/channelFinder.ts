@@ -22,7 +22,7 @@ const isDefinedChannel = (channel: Channel): channel is DefinedChannel =>
 const doPaginate = async (
   app: AppInstance,
   cursor: string | undefined,
-  whenDoneIterator: (channel: DefinedChannel) => Promise<void>
+  whenDoneIterator: (channel: DefinedChannel) => Promise<boolean>
 ) => {
   console.log("doPaginate ", { cursor });
   const result = await app.client.conversations.list({
@@ -47,8 +47,8 @@ const doPaginate = async (
   if (next_cursor === undefined || next_cursor === "") {
     for (const channel of channelMap.values()) {
       console.log("iterating channel ", channel.name);
-      await whenDoneIterator(channel);
-      await sleep(parseInt(process.env.SLACK_CHANNEL_ITERATE_DELAY ?? "500"));
+      if (await whenDoneIterator(channel))
+        await sleep(parseInt(process.env.SLACK_CHANNEL_ITERATE_DELAY ?? "500"));
     }
   } else {
     await doPaginate(app, next_cursor, whenDoneIterator);
@@ -57,7 +57,7 @@ const doPaginate = async (
 
 export const channelIterator = async (
   app: AppInstance,
-  iterator: (channel: DefinedChannel) => Promise<void>
+  iterator: (channel: DefinedChannel) => Promise<boolean>
 ) => {
   await doPaginate(app, undefined, iterator);
 };

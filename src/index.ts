@@ -6,11 +6,11 @@ import {
   formatDataArray,
   formattedDataArrayToString,
   url,
-} from "./dataFormatter";
+} from "./formatters/dataFormatter";
 import { accumulate, getAllLines } from "./getAllLines";
 import { readSheetLine } from "./gsheetReader";
 import { createPageFromMessage, creationResult, getUrlFromTitle } from "./wiki";
-import * as wikithis from "./wikithisCommand";
+import * as wikithis from "./commands/wikithisCommand";
 import { getDetailsFromUserId } from "./slackHelpers";
 import { channelIterator, DefinedChannel } from "./channelFinder";
 

@@ -156,11 +156,12 @@ await app.start(process.env.PORT || 3000).then(() => {
 
 // join all channels
 const joinChannel = async (channel: DefinedChannel) => {
-  if (channel.is_member || channel.is_archived) return;
+  if (channel.is_member || channel.is_archived) return false;
   await app.client.conversations.join({
     token: process.env.SLACK_BOT_TOKEN,
     channel: channel.id,
   });
+  return true;
 };
 channelIterator(app, joinChannel);
 setInterval(() => {

@@ -1,18 +1,21 @@
 import { App } from "@slack/bolt";
-import net from "net";
+import * as net from "net";
 import * as dotenv from "dotenv";
 import {
-  formatData,
   formatDataArray,
   formattedDataArrayToString,
   url,
-} from "./dataFormatter";
+} from "@formatters/dataFormatter";
 import { accumulate, getAllLines } from "./getAllLines";
 import { readSheetLine } from "./gsheetReader";
-import { createPageFromMessage, creationResult, getUrlFromTitle } from "./wiki";
-import * as wikithis from "./wikithisCommand";
-import { getDetailsFromUserId } from "./slackHelpers";
-import { channelIterator, DefinedChannel } from "./channelFinder";
+import {
+  createPageFromMessage,
+  creationResult,
+  getUrlFromTitle,
+} from "@helpers/wiki/createPage";
+import * as wikithis from "./commands/wikithisCommand";
+import { getDetailsFromUserId } from "@helpers/slack/users";
+import { DefinedChannel } from "@helpers/slack/channels";
 
 dotenv.config();
 
@@ -176,4 +179,5 @@ const server = net.createServer((socket) => {
   socket.pipe(socket);
 });
 
-server.listen(process.env.PORT || 3000);
+if (process.env.SUPPORT_HEALTH_CHECK === "true")
+  server.listen(process.env.PORT || 3000);

@@ -9,6 +9,7 @@ processes = []
   PORT = "8080"
   SLACK_CHANNEL_PAGINATE_DELAY=3000
   SLACK_CHANNEL_ITERATE_DELAY=1500
+  SUPPORT_HEALTH_CHECK=true
 
 [experimental]
   allowed_public_ports = []

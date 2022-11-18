@@ -1,4 +1,4 @@
-import { PurchaseRequestData, PurchaseRequestKeys } from "./gsheetReader";
+import { PurchaseRequestData, PurchaseRequestKeys } from "../gsheetReader";
 import { formatRange } from "./stringFormatter";
 
 const read = (val: string | undefined) => val ?? "N/A";

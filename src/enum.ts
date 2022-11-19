@@ -25,13 +25,7 @@ export function val<N extends string, P>(name: N, param?: P) {
       });
 }
 
-const enumNames = <
-  Obj extends {
-    [P in keyof Obj]: EnumValue<P extends string ? P : never, any>;
-  }
->(
-  obj: Readonly<Obj>
-) => {
+const enumNames = <Obj>(obj: Obj) => {
   const refObj = {};
   for (const name of Object.keys(obj)) {
     refObj[name] = name;
@@ -49,8 +43,8 @@ export const makeEnum = <
     >;
   }
 >(
-  obj: Readonly<Obj>
-) => obj;
+  obj: Obj
+) => ({ ...obj, names: enumNames(obj) });
 
 type ExtractEnumObj<T> = T extends ParamEnumValueFn<string, unknown>
   ? ReturnType<T>
@@ -60,6 +54,17 @@ type ExtractEnumObj<T> = T extends ParamEnumValueFn<string, unknown>
 
 export type EnumValues<
   Obj extends {
-    [P in keyof Obj]: EnumValue<P extends string ? P : never, any>;
+    [P in keyof Obj]: P extends "names"
+      ? Record<string, string>
+      : EnumValue<P extends string ? P : never, any>;
   }
 > = ExtractEnumObj<Obj[keyof Obj]>;
+
+/**
+ * assert that a switch statement is exhaustive over an enum
+ * @param p the enum being matched on
+ */
+export function assertExhaustiveSwitch(p: never): never;
+export function assertExhaustiveSwitch(val: { name: string; param?: unknown }) {
+  throw new Error(`Unknown enum value name: ${val.name}\nparam: ${val.param}`);
+}

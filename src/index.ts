@@ -4,18 +4,11 @@ import * as dotenv from "dotenv";
 import {
   formatDataArray,
   formattedDataArrayToString,
-  url,
 } from "@formatters/dataFormatter";
 import { accumulate, getAllLines } from "./getAllLines";
 import { readSheetLine } from "./gsheetReader";
-import {
-  createPageFromMessage,
-  creationResult,
-  getUrlFromTitle,
-} from "@helpers/wiki/createPage";
-import * as wikithis from "./commands/wikithisCommand";
-import { getDetailsFromUserId } from "@helpers/slack/users";
 import { channelIterator, DefinedChannel } from "@helpers/slack/channels";
+import injectCommands from "@commands/injectCommands";
 
 dotenv.config();
 
@@ -61,97 +54,8 @@ app.message(/lines?\s*\d+/, async ({ message, say }) => {
   }
 });
 
-app.message(wikithis.wikithisRegex, async ({ message, say }) => {
-  console.log("msg", message);
-  console.log(`wikithis command detected in ${message.channel}`);
-  const title = wikithis.getTitleFromMessage(message.text);
-  if (title === undefined) {
-    await say({
-      text: wikithis.howToUse,
-      thread_ts: message.ts,
-    });
-    return;
-  }
-  await say({
-    text: `Attempting to create page with title "${title}"...`,
-    thread_ts: message.ts,
-  });
-  const thread = await app.client.conversations.replies({
-    token: process.env.SLACK_BOT_TOKEN,
-    channel: message.channel,
-    ts: message.thread_ts,
-  });
-  if (thread.ok === false || thread.messages === undefined) {
-    await say({
-      text: `Error fetching thread. Details have been logged.`,
-      thread_ts: message.ts,
-    });
-    console.error("error fetching thread", { thread });
-    return;
-  }
-
-  // filter and combine messages
-  const messagesArray = await Promise.all(
-    thread.messages
-      .filter(
-        (m) =>
-          m.text?.startsWith(".wikithis") === false && m.bot_id === undefined
-      )
-      .map(async (m) =>
-        m.user === undefined
-          ? `'''unknown user:''' ${m.text}`
-          : `'''${(await getDetailsFromUserId(app, m.user))?.real_name}:''' ${
-              m.text
-            }`
-      )
-  );
-  console.log("messagesArray", messagesArray);
-  const messages = messagesArray
-    // show actual newlines for newline messages
-    .map((m) => m.replaceAll("\n", "\n\n"))
-    .join("\n\n");
-  console.log("messages", messages);
-
-  const catagories = wikithis.getCatagories({
-    title,
-  });
-
-  console.log("catagories", catagories);
-
-  const result = await createPageFromMessage(title, messages, catagories);
-  // repetitive but it's fine
-  switch (result) {
-    case creationResult.PageExists: {
-      await say({
-        text: `Page with title "${title}" already exists ${url(
-          "here",
-          getUrlFromTitle(title)
-        )}. Details have been logged.`,
-        thread_ts: message.ts,
-      });
-      console.error("page already exists", { title });
-      return;
-    }
-    case creationResult.Error: {
-      await say({
-        text: `Error creating page with title "${title}". Details have been logged.`,
-        thread_ts: message.ts,
-      });
-      console.error("error creating page", { title });
-      return;
-    }
-    case creationResult.Success: {
-      await say({
-        text: `Page with title ${url(
-          title,
-          getUrlFromTitle(title)
-        )} created successfully.`,
-        thread_ts: message.ts,
-      });
-      return;
-    }
-  }
-});
+// inject all the dot commands
+injectCommands(app);
 
 await app.start(process.env.PORT || 3000).then(() => {
   console.log("⚡️ Bolt app is running!");

@@ -2,13 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      /**
-      "@": "/src",
-      "@commands": "/src/commands",
-      "@formatters": "/src/formatters",
-      "@helpers": "/src/helpers",
-      */
-      "@/*": ["src/*"],
+      "@src/*": ["src/*"],
       "@commands/*": ["src/commands/*"],
       "@formatters/*": ["src/formatters/*"],
       "@helpers/*": ["src/helpers/*"]

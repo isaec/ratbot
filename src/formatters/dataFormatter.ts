@@ -86,7 +86,7 @@ export const formatDataArray = (
       `*Aggregate of request for ${formatRange(
         // may become expensive compared to single iteration
         dataArray
-          .map((data) => data["Line #"])
+          .map((obj) => obj.data["Line #"])
           .filter(defined)
           .map(toInt)
       )}*`
@@ -95,7 +95,7 @@ export const formatDataArray = (
       md(
         `*Total Price + Tax:* ${moneyFormatter.format(
           dataArray
-            .map((data) => data["Price + Tax"])
+            .map((obj) => obj.data["Price + Tax"])
             .filter(defined)
             .map((price) => parseFloat(price.replace("$", "")))
             .reduce((a, b) => a + b, 0)

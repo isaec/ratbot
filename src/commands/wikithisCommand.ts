@@ -42,9 +42,9 @@ const getCatagories = ({
 
   const catagories: string[] = [];
 
-  for (const [match, catagory] of titleMatcher) {
+  for (const [match, category] of titleMatcher) {
     if (title.toLowerCase().includes(match)) {
-      catagories.push(catagory);
+      catagories.push(category);
     }
   }
 

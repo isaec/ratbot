@@ -3,7 +3,7 @@ import { App, KnownEventFromType, SayFn } from "@slack/bolt";
 import { StringIndexed } from "@slack/bolt/dist/types/helpers";
 
 export type AppInstance = App<StringIndexed>;
-type Message = KnownEventFromType<"message">;
+export type Message = KnownEventFromType<"message">;
 
 export const commandEvents = makeEnum({
   /** Show help message explaining how to use command. Useful for validation failure. */

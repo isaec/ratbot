@@ -12,7 +12,7 @@ export type DefinedChannel = RequireKey<Channel, "id">;
 
 dotenv.config();
 
-const channelMap = new Map<string, DefinedChannel>();
+export const channelMap = new Map<string, Readonly<DefinedChannel>>();
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -59,7 +59,7 @@ const doPaginate = async (
 
 export const channelIterator = async (
   app: AppInstance,
-  iterator: (channel: DefinedChannel) => Promise<boolean>
+  iterator: (channel: Readonly<DefinedChannel>) => Promise<boolean>
 ) => {
   await doPaginate(app, undefined, iterator);
 };

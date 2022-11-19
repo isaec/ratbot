@@ -11,14 +11,6 @@ type EnumValue<N extends string, P> =
   | ParamEnumValueFn<N, P>
   | NamedEnumValue<N>;
 
-const makeParamEnumValue = <N extends string, P>(
-  name: N,
-  param: P
-): ParamEnumValue<N, P> => ({
-  name,
-  param,
-});
-
 export function val<N extends string>(name: N): NamedEnumValue<N>;
 export function val<N extends string, P>(
   name: N,
@@ -27,7 +19,10 @@ export function val<N extends string, P>(
 export function val<N extends string, P>(name: N, param?: P) {
   return param === undefined
     ? { name }
-    : (param: P) => makeParamEnumValue(name, param);
+    : (param: P) => ({
+        name,
+        param,
+      });
 }
 
 export const makeEnum = <

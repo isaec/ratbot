@@ -18,6 +18,11 @@ const getTitleFromMessage = (message: string) => {
   return titleCase(match[1]);
 };
 
+const titleMatcher = [
+  ["how to", "How To"],
+  ["discussion", "Discussion"],
+];
+
 const channelCategoryMatcher = [
   [["code", "programming", "software"], "Programming"],
   [["engineer", "mechanical", "prototypes"], "Mechanical"],
@@ -36,7 +41,12 @@ const getCatagories = ({
   console.log("getCatagories", { title, channel });
 
   const catagories: string[] = [];
-  if (containsHowTo.test(title)) catagories.push("How To");
+
+  for (const [match, catagory] of titleMatcher) {
+    if (title.toLowerCase().includes(match)) {
+      catagories.push(catagory);
+    }
+  }
 
   if (channel !== undefined)
     for (const [channels, category] of channelCategoryMatcher) {

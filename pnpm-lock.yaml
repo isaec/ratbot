@@ -8,6 +8,7 @@ specifiers:
   dotenv: ^16.0.3
   generate-combinations: ^1.0.1
   google-spreadsheet: ^3.3.0
+  string-replace-async: ^3.0.2
   vite: ^3.2.4
   vite-node: ^0.24.5
   vitest: ^0.24.5
@@ -19,6 +20,7 @@ dependencies:
   ap-style-title-case: 1.1.2
   dotenv: 16.0.3
   google-spreadsheet: 3.3.0
+  string-replace-async: 3.0.2
   vite: 3.2.4_@types+node@18.11.9
   vite-node: 0.24.5_@types+node@18.11.9
   wikiapi: 1.19.4
@@ -1639,6 +1641,11 @@ packages:
   /statuses/2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
+    dev: false
+
+  /string-replace-async/3.0.2:
+    resolution: {integrity: sha512-s6hDtXJ7FKyRap/amefqrOMpkEQvxUDueyvJygQeHxCK5Za90dOMgdibCCrPdfdAYAkr8imrZ1PPXW7DOf0RzQ==}
+    engines: {node: '>= 14.0.0'}
     dev: false
 
   /string.prototype.trimend/1.0.6:

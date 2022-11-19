@@ -1,5 +1,9 @@
 import titleCase from "ap-style-title-case";
-import { commandEvents, CommandInterface } from "./commandInterface";
+import {
+  AppInstance,
+  commandEvents,
+  CommandInterface,
+} from "./commandInterface";
 import { getDetailsFromUserId } from "@helpers/slack/users";
 import {
   createPageFromMessage,
@@ -8,6 +12,7 @@ import {
 } from "@helpers/wiki/createPage";
 import { url } from "@formatters/dataFormatter";
 import { channelMap } from "@src/helpers/slack/channels";
+import replaceAsync from "string-replace-async";
 
 const wikithisRegex = /^\.wikithis\s+(.*)$/i;
 const containsHowTo = /how to/i;
@@ -58,6 +63,14 @@ const getCatagories = ({
   return catagories;
 };
 
+const pingRegex = /<@([A-Z0-9]+)>/g;
+const replacePingWithName = async (app: AppInstance, text: string) =>
+  replaceAsync(text, pingRegex, async (match, id) => {
+    console.log({ match, id });
+    const user = await getDetailsFromUserId(app, id);
+    return `'''''@${user.name}'''''` ?? match;
+  });
+
 export default {
   name: "wikithis",
   howToUse: `message should be of the form ".wikithis <title>" in a thread`,
@@ -96,6 +109,7 @@ export default {
                 m.text
               }`
         )
+        .map(async (m) => replacePingWithName(app, await m))
     );
     console.log("messagesArray", messagesArray);
     const messages = messagesArray

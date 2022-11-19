@@ -25,9 +25,28 @@ export function val<N extends string, P>(name: N, param?: P) {
       });
 }
 
-export const makeEnum = <
+const enumNames = <
   Obj extends {
     [P in keyof Obj]: EnumValue<P extends string ? P : never, any>;
+  }
+>(
+  obj: Readonly<Obj>
+) => {
+  const refObj = {};
+  for (const name of Object.keys(obj)) {
+    refObj[name] = name;
+  }
+  return refObj as { [P in keyof Obj]: P };
+};
+
+type CapitalizeAny<T> = T extends string ? Capitalize<T> : never;
+
+export const makeEnum = <
+  Obj extends {
+    [P in CapitalizeAny<keyof Obj>]: EnumValue<
+      P extends string ? P : never,
+      any
+    >;
   }
 >(
   obj: Readonly<Obj>

@@ -28,6 +28,7 @@ const sheet = await doc.sheetsByTitle[
 ];
 
 const headerRowIndex = parseInt(process.env.GSHEET_HEADER_ROW ?? "1");
+const urlColumnIndex = parseInt(process.env.GSHEET_URL_COLUMN ?? "8");
 
 await sheet.loadHeaderRow(headerRowIndex);
 
@@ -58,17 +59,45 @@ export type PurchaseRequestData = Partial<Record<PurchaseRequestKeys, string>>;
 
 type PurchaseRequestRow = GoogleSpreadsheetRow & PurchaseRequestData;
 
+const computeOffset = (rowNumber: number) => {
+  return rowNumber - (headerRowIndex + 1);
+};
+
 const getRow = async (rowNumber: number) => {
   const rows = await sheet.getRows({
-    offset: rowNumber - (headerRowIndex + 1),
+    offset: computeOffset(rowNumber),
     limit: 1,
   });
   return rows[0] as PurchaseRequestRow;
 };
 
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const cachedCellSet = new Set<number>();
+
+const getHyperlink = async (rowNumber: number) => {
+  if (!cachedCellSet.has(rowNumber)) {
+    const position = `${alphabet.charAt(urlColumnIndex)}${rowNumber}`;
+    console.log("loading", { position });
+    await sheet.loadCells(position);
+    cachedCellSet.add(rowNumber);
+  }
+
+  return sheet.getCell(rowNumber - 1, urlColumnIndex).hyperlink;
+};
+
+export type HyperlinkedPurchaseRequestData = {
+  data: PurchaseRequestData;
+  hyperlink: string | undefined;
+};
+
 export const readSheetLine = async (
   line: number
-): Promise<PurchaseRequestData> => {
+): Promise<HyperlinkedPurchaseRequestData> => {
   const row = await getRow(line);
-  return row;
+  const hyperlink = await getHyperlink(line);
+  console.log({ line, hyperlink });
+  return {
+    data: row,
+    hyperlink,
+  };
 };

@@ -44,29 +44,3 @@ export type EnumValues<
     [P in keyof Obj]: EnumValue<P extends string ? P : never, any>;
   }
 > = ExtractEnumObj<Obj[keyof Obj]>;
-
-// testing it out
-
-const testEnum = makeEnum({
-  Success: val("Success"),
-  Error: val("Error"),
-  Message: val("Message", ""),
-  Number: val("Number", 0),
-  ABC: val<"ABC", "A" | "B" | "C">("ABC", "A"),
-});
-type TestEnum = EnumValues<typeof testEnum>;
-
-const processTestEnum = (testEnum: TestEnum) => {
-  switch (testEnum.name) {
-    case "Success":
-      testEnum;
-      return "Success";
-    case "Error":
-      return "Error";
-    case "Message":
-      testEnum;
-      return testEnum.param;
-    case "Number":
-      return testEnum.param;
-  }
-};

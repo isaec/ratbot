@@ -54,6 +54,7 @@ app.message(/lines?\s*\d+/, async ({ message, say }) => {
   }
 });
 
+// inject all the dot commands
 injectCommands(app);
 
 await app.start(process.env.PORT || 3000).then(() => {

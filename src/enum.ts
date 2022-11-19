@@ -1,18 +1,20 @@
-interface EnumValueObj<N extends string, T = false> {
+interface ParamEnumValue<N extends string, T = false> {
   name: N;
   param: T;
 }
 
-type ParamEnumValue<N extends string, P> = (param: P) => EnumValueObj<N, P>;
+type ParamEnumValueFn<N extends string, P> = (param: P) => ParamEnumValue<N, P>;
 
-type NamedEnumValue<N extends string> = EnumValueObj<N, false>;
+type NamedEnumValue<N extends string> = { name: N };
 
-type EnumValue<N extends string, P> = ParamEnumValue<N, P> | NamedEnumValue<N>;
+type EnumValue<N extends string, P> =
+  | ParamEnumValueFn<N, P>
+  | NamedEnumValue<N>;
 
-const makeEnumValue = <N extends string, P>(
+const makeParamEnumValue = <N extends string, P>(
   name: N,
   param: P
-): EnumValueObj<N, P> => ({
+): ParamEnumValue<N, P> => ({
   name,
   param,
 });
@@ -21,11 +23,11 @@ export function val<N extends string>(name: N): NamedEnumValue<N>;
 export function val<N extends string, P>(
   name: N,
   param: P
-): ParamEnumValue<N, P>;
+): ParamEnumValueFn<N, P>;
 export function val<N extends string, P>(name: N, param?: P) {
   return param === undefined
-    ? makeEnumValue(name, false)
-    : (param: P) => makeEnumValue(name, param);
+    ? { name }
+    : (param: P) => makeParamEnumValue(name, param);
 }
 
 export const makeEnum = <
@@ -36,7 +38,7 @@ export const makeEnum = <
   obj: Readonly<Obj>
 ) => obj;
 
-type ExtractEnumObj<T> = T extends ParamEnumValue<infer N, infer P>
+type ExtractEnumObj<T> = T extends ParamEnumValueFn<infer N, infer P>
   ? ReturnType<T>
   : T extends NamedEnumValue<infer N>
   ? T
@@ -61,10 +63,12 @@ type TestEnum = EnumValues<typeof testEnum>;
 const processTestEnum = (testEnum: TestEnum) => {
   switch (testEnum.name) {
     case "Success":
+      testEnum;
       return "Success";
     case "Error":
       return "Error";
     case "Message":
+      testEnum;
       return testEnum.param;
     case "Number":
       return testEnum.param;

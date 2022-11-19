@@ -28,7 +28,7 @@ export function val<N extends string, P>(name: N, param?: P) {
     : (param: P) => makeEnumValue(name, param);
 }
 
-const makeEnum = <
+export const makeEnum = <
   Obj extends {
     [P in keyof Obj]: EnumValue<P extends string ? P : never, any>;
   }
@@ -36,10 +36,37 @@ const makeEnum = <
   obj: Readonly<Obj>
 ) => obj;
 
+type ExtractEnumObj<T> = T extends ParamEnumValue<infer N, infer P>
+  ? ReturnType<T>
+  : T extends NamedEnumValue<infer N>
+  ? T
+  : never;
+
+export type EnumValues<
+  Obj extends {
+    [P in keyof Obj]: EnumValue<P extends string ? P : never, any>;
+  }
+> = ExtractEnumObj<Obj[keyof Obj]>;
+
+// testing it out
+
 const testEnum = makeEnum({
   Success: val("Success"),
   Error: val("Error"),
   Message: val("Message", ""),
+  Number: val("Number", 0),
 });
+type TestEnum = EnumValues<typeof testEnum>;
 
-// type TestEnum = EnumValues<typeof testEnum>;
+const processTestEnum = (testEnum: TestEnum) => {
+  switch (testEnum.name) {
+    case "Success":
+      return "Success";
+    case "Error":
+      return "Error";
+    case "Message":
+      return testEnum.param;
+    case "Number":
+      return testEnum.param;
+  }
+};

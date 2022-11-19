@@ -1,16 +1,18 @@
-interface EnumValue<N extends string, T = false> {
+interface EnumValueObj<N extends string, T = false> {
   name: N;
   param: T;
 }
 
-type ParamEnumValue<N extends string, P> = (param: P) => EnumValue<N, P>;
+type ParamEnumValue<N extends string, P> = (param: P) => EnumValueObj<N, P>;
 
-type NamedEnumValue<N extends string> = EnumValue<N, false>;
+type NamedEnumValue<N extends string> = EnumValueObj<N, false>;
+
+type EnumValue<N extends string, P> = ParamEnumValue<N, P> | NamedEnumValue<N>;
 
 const makeEnumValue = <N extends string, P>(
   name: N,
   param: P
-): EnumValue<N, P> => ({
+): EnumValueObj<N, P> => ({
   name,
   param,
 });
@@ -26,8 +28,18 @@ export function val<N extends string, P>(name: N, param?: P) {
     : (param: P) => makeEnumValue(name, param);
 }
 
-const testEnum = {
+const makeEnum = <
+  Obj extends {
+    [P in keyof Obj]: EnumValue<P extends string ? P : never, any>;
+  }
+>(
+  obj: Readonly<Obj>
+) => obj;
+
+const testEnum = makeEnum({
   Success: val("Success"),
   Error: val("Error"),
   Message: val("Message", ""),
-};
+});
+
+// type TestEnum = EnumValues<typeof testEnum>;

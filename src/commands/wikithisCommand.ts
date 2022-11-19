@@ -7,6 +7,7 @@ import {
   getUrlFromTitle,
 } from "@helpers/wiki/createPage";
 import { url } from "@formatters/dataFormatter";
+import { channelMap } from "@src/helpers/slack/channels";
 
 const wikithisRegex = /^\.wikithis\s+(.*)$/i;
 const containsHowTo = /how to/i;
@@ -17,9 +18,33 @@ const getTitleFromMessage = (message: string) => {
   return titleCase(match[1]);
 };
 
-const getCatagories = ({ title }) => {
+const channelCategoryMatcher = [
+  [["code", "programming", "software"], "Programming"],
+  [["engineer", "mechanical", "prototypes"], "Mechanical"],
+  [["cad", "fusion360"], "CAD"],
+  [["electrical"], "Electrical"],
+  [["machining"], "CAM"],
+] as Array<[string[], string]>;
+
+const getCatagories = ({
+  title,
+  channel,
+}: {
+  title: string;
+  channel: string | undefined;
+}) => {
+  console.log("getCatagories", { title, channel });
+
   const catagories: string[] = [];
   if (containsHowTo.test(title)) catagories.push("How To");
+
+  if (channel !== undefined)
+    for (const [channels, category] of channelCategoryMatcher) {
+      const lowercaseChannel = channel.toLowerCase();
+
+      if (channels.some((c) => lowercaseChannel.includes(c)))
+        catagories.push(category);
+    }
   return catagories;
 };
 
@@ -71,6 +96,7 @@ export default {
 
     const catagories = getCatagories({
       title,
+      channel: channelMap.get(message.channel).name,
     });
 
     console.log("catagories", catagories);

@@ -1,4 +1,9 @@
-import { PurchaseRequestData, PurchaseRequestKeys } from "../gsheetReader";
+import { HyperlinkDisplayType } from "google-spreadsheet";
+import {
+  HyperlinkedPurchaseRequestData,
+  PurchaseRequestData,
+  PurchaseRequestKeys,
+} from "../gsheetReader";
 import { formatRange } from "./stringFormatter";
 
 const read = (val: string | undefined) => val ?? "N/A";
@@ -47,9 +52,12 @@ export const url = (text: string, url: string | undefined) =>
 
 type SlackBlock = Array<Divider | Section>;
 
-export const formatData = (data: PurchaseRequestData): SlackBlock => [
+export const formatData = ({
+  data,
+  hyperlink,
+}: HyperlinkedPurchaseRequestData): SlackBlock => [
   section([
-    md(`*${read(data["Line #"])}:* ${url(read(data["Item"]), data["URL"])}`),
+    md(`*${read(data["Line #"])}:* ${url(read(data["Item"]), hyperlink)}`),
     ...displayedKeys
       .filter((key) => data[key] !== undefined)
       .map((key) => md(`*${key}:* ${data[key]}`)),
@@ -70,7 +78,7 @@ const moneyFormatter = new Intl.NumberFormat("en-US", {
 });
 
 export const formatDataArray = (
-  dataArray: PurchaseRequestData[]
+  dataArray: HyperlinkedPurchaseRequestData[]
 ): SlackBlock => [
   ...dataArray.flatMap((data) => [...formatData(data), divider()]),
   section(

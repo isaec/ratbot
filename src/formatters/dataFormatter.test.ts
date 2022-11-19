@@ -1,7 +1,7 @@
 import { assert, describe, expect, it, test } from "vitest";
 import { formatData, formattedDataArrayToString } from "./dataFormatter";
 import { getAllLines, setToSortedArray } from "./getAllLines";
-import { generate, optional } from "generate-combinations";
+import { generate, one, optional } from "generate-combinations";
 import { PurchaseRequestData } from "./gsheetReader";
 
 describe("formatData", () => {
@@ -14,12 +14,14 @@ describe("formatData", () => {
       "Total Price (no tax)": optional("9.99"),
       "Price + Tax": optional("10.73"),
       "Line #": "42",
-      URL: optional("https://www.example.com"),
+      URL: one(["https://www.example.com", "stuff"]),
       Category: optional("FRC Robots"),
       Comments: optional("this is a comment"),
     })
   )("formatData(%s)", (data: PurchaseRequestData) => {
-    expect(formatData(data)).toMatchSnapshot();
+    expect(
+      formatData({ data, hyperlink: "https://www.example.com" })
+    ).toMatchSnapshot();
   });
 });
 

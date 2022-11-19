@@ -92,13 +92,12 @@ export type HyperlinkedPurchaseRequestData = {
 
 export const readSheetLine = async (
   line: number
-): Promise<PurchaseRequestData> => {
+): Promise<HyperlinkedPurchaseRequestData> => {
   const row = await getRow(line);
   const hyperlink = await getHyperlink(line);
   console.log({ line, hyperlink });
-  return row;
-  // return {
-  //   data: row,
-  //   hyperlink,
-  // };
+  return {
+    data: row,
+    hyperlink,
+  };
 };

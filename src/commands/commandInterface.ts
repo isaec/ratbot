@@ -1,8 +1,8 @@
-import { assertExhaustiveSwitch, EnumValues, makeEnum, val } from "@enum";
-import { App, KnownEventFromType } from "@slack/bolt";
+import { assertExhaustiveSwitch, EnumValues, makeEnum, val } from "@src/enum";
+import { App, KnownEventFromType, SayFn } from "@slack/bolt";
 import { StringIndexed } from "@slack/bolt/dist/types/helpers";
 
-type AppInstance = App<StringIndexed>;
+export type AppInstance = App<StringIndexed>;
 type Message = KnownEventFromType<"message">;
 
 export const commandEvents = makeEnum({
@@ -21,14 +21,11 @@ export interface CommandInterface {
   commandRegex: RegExp;
   executer: (
     app: AppInstance,
-    message: Message
+    arg1: { message: Message; say: SayFn }
   ) => AsyncIterableIterator<CommandEvents>;
 }
 
-export const registerCommand = (
-  app: AppInstance,
-  command: CommandInterface
-) => {
+const registerCommand = (app: AppInstance, command: CommandInterface) => {
   app.message(command.commandRegex, async ({ message, say }) => {
     console.log(`${command.name} command detected in ${message.channel}`);
 
@@ -39,7 +36,7 @@ export const registerCommand = (
       });
     };
 
-    const iterator = command.executer(app, message);
+    const iterator = command.executer(app, { message, say });
     for await (const event of iterator) {
       switch (event.name) {
         case commandEvents.names.Help:
@@ -66,4 +63,13 @@ export const registerCommand = (
       }
     }
   });
+};
+
+export const registerCommands = (
+  app: AppInstance,
+  ...commands: CommandInterface[]
+) => {
+  for (const command of commands) {
+    registerCommand(app, command);
+  }
 };

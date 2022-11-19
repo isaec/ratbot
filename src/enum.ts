@@ -33,9 +33,9 @@ export const makeEnum = <
   obj: Readonly<Obj>
 ) => obj;
 
-type ExtractEnumObj<T> = T extends ParamEnumValueFn<infer N, infer P>
+type ExtractEnumObj<T> = T extends ParamEnumValueFn<string, unknown>
   ? ReturnType<T>
-  : T extends NamedEnumValue<infer N>
+  : T extends NamedEnumValue<string>
   ? T
   : never;
 
@@ -52,6 +52,7 @@ const testEnum = makeEnum({
   Error: val("Error"),
   Message: val("Message", ""),
   Number: val("Number", 0),
+  ABC: val<"ABC", "A" | "B" | "C">("ABC", "A"),
 });
 type TestEnum = EnumValues<typeof testEnum>;
 

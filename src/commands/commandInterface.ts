@@ -25,6 +25,20 @@ export interface CommandInterface {
   ) => AsyncIterableIterator<CommandEvents>;
 }
 
+/**
+ * wrap the command executer in a try catch so that we can catch unhandled errors and send a message to the user, instead of the command just failing silently
+ *
+ * @param iterator iterator to wrap
+ * @returns yields the same events as the iterator, but if an error is thrown, it will yield a Error event
+ */
+async function* errorWrapper(iterator: AsyncIterableIterator<CommandEvents>) {
+  try {
+    yield* iterator;
+  } catch (e) {
+    yield commandEvents.Error(e);
+  }
+}
+
 const registerCommand = (app: AppInstance, command: CommandInterface) => {
   app.message(command.commandRegex, async ({ message, say }) => {
     console.log(`${command.name} command detected in ${message.channel}`);
@@ -36,7 +50,7 @@ const registerCommand = (app: AppInstance, command: CommandInterface) => {
       });
     };
 
-    const iterator = command.executer(app, { message, say });
+    const iterator = errorWrapper(command.executer(app, { message, say }));
     for await (const event of iterator) {
       switch (event.name) {
         case commandEvents.names.Help:

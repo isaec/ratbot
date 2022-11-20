@@ -15,7 +15,6 @@ import { channelMap } from "@src/helpers/slack/channels";
 import replaceAsync from "string-replace-async";
 
 const wikithisRegex = /^\.wikithis\s+(.*)$/i;
-const containsHowTo = /how to/i;
 
 const getTitleFromMessage = (message: string) => {
   const match = message.match(wikithisRegex);

@@ -1,8 +1,7 @@
 import { assert, describe, expect, it, test } from "vitest";
 import { formatData, formattedDataArrayToString } from "./dataFormatter";
-import { getAllLines, setToSortedArray } from "./getAllLines";
 import { generate, one, optional } from "generate-combinations";
-import { PurchaseRequestData } from "./gsheetReader";
+import { PurchaseRequestData } from "../gsheetReader";
 
 describe("formatData", () => {
   test.each(

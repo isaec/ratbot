@@ -16,7 +16,7 @@ const read = (val: string | undefined) => val ?? "N/A";
 
 const displayedKeys: PurchaseRequestKeys[] = ["Price Per", "Qty", "Comments"];
 
-type SlackBlock = Array<Divider | Section>;
+export type SlackBlock = Array<Divider | Section>;
 
 export const formatData = ({
   data,

@@ -1,42 +1,48 @@
+import { SlackBlock } from "@src/formatters/dataFormatter";
 import { test, describe, expect } from "vitest";
 import { divider, md, section, url } from "./blocks";
 
 describe("blocks", () => {
+  const block1: SlackBlock = [
+    section(md("header"), [
+      md("body"),
+      md(`another detail, with a ${url("link", "https://example.com")}`),
+      md(`a final detail, with a ${url("broken link", "example co")}`),
+    ]),
+  ];
+  const block2: SlackBlock = [
+    section(md("header"), [md("body")]),
+    section([md("another detail"), md("final detail")]),
+    divider(),
+  ];
+
   test("generates object matching snapshot", () => {
-    expect(
-      section(md("header"), [
-        md("body"),
-        md(`another detail, with a ${url("link", "https://example.com")}`),
-        md(`a final detail, with a ${url("broken link", "example co")}`),
-      ])
-    ).toMatchInlineSnapshot(`
-      {
-        "fields": [
-          {
-            "text": "body",
+    expect(block1).toMatchInlineSnapshot(`
+      [
+        {
+          "fields": [
+            {
+              "text": "body",
+              "type": "mrkdwn",
+            },
+            {
+              "text": "another detail, with a <https://example.com|link>",
+              "type": "mrkdwn",
+            },
+            {
+              "text": "a final detail, with a broken link",
+              "type": "mrkdwn",
+            },
+          ],
+          "text": {
+            "text": "header",
             "type": "mrkdwn",
           },
-          {
-            "text": "another detail, with a <https://example.com|link>",
-            "type": "mrkdwn",
-          },
-          {
-            "text": "a final detail, with a broken link",
-            "type": "mrkdwn",
-          },
-        ],
-        "text": {
-          "text": "header",
-          "type": "mrkdwn",
+          "type": "section",
         },
-        "type": "section",
-      }
+      ]
     `);
-    expect([
-      section(md("header"), [md("body")]),
-      section([md("another detail"), md("final detail")]),
-      divider(),
-    ]).toMatchInlineSnapshot(`
+    expect(block2).toMatchInlineSnapshot(`
       [
         {
           "fields": [

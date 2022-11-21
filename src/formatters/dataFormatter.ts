@@ -90,5 +90,5 @@ export const formattedDataArrayToString = (
       str += "----\n";
     }
   }
-  return str;
+  return str.trim();
 };

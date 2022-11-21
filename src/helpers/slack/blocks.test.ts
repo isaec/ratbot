@@ -1,4 +1,7 @@
-import { SlackBlock } from "@src/formatters/dataFormatter";
+import {
+  formattedDataArrayToString,
+  SlackBlock,
+} from "@src/formatters/dataFormatter";
 import { test, describe, expect } from "vitest";
 import { divider, md, section, url } from "./blocks";
 
@@ -74,6 +77,23 @@ describe("blocks", () => {
           "type": "divider",
         },
       ]
+    `);
+  });
+
+  test("converts to legible string text", () => {
+    expect(formattedDataArrayToString(block1)).toMatchInlineSnapshot(`
+      "header
+      body
+      another detail, with a <https://example.com|link>
+      a final detail, with a broken link"
+    `);
+
+    expect(formattedDataArrayToString(block2)).toMatchInlineSnapshot(`
+      "header
+      body
+      another detail
+      final detail
+      ----"
     `);
   });
 });

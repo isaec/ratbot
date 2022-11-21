@@ -1,10 +1,9 @@
 import {
-  Divider,
-  Section,
   section,
   md,
   divider,
   url,
+  SlackBlock,
 } from "@src/helpers/slack/blocks";
 import {
   HyperlinkedPurchaseRequestData,
@@ -15,8 +14,6 @@ import { formatRange } from "./stringFormatter";
 const read = (val: string | undefined) => val ?? "N/A";
 
 const displayedKeys: PurchaseRequestKeys[] = ["Price Per", "Qty", "Comments"];
-
-export type SlackBlock = Array<Divider | Section>;
 
 export const formatData = ({
   data,
@@ -70,25 +67,3 @@ export const formatDataArray = (
     ]
   ),
 ];
-
-// hacky function
-export const formattedDataArrayToString = (
-  data: ReturnType<typeof formatDataArray>
-) => {
-  let str = "";
-  for (const block of data) {
-    if (block.type === "section") {
-      if (block.text !== undefined && typeof block.text.text === "string") {
-        str += block.text.text + "\n";
-      }
-      if (block.fields) {
-        for (const field of block.fields) {
-          str += field.text + "\n";
-        }
-      }
-    } else if (block.type === "divider") {
-      str += "----\n";
-    }
-  }
-  return str.trim();
-};

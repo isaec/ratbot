@@ -40,22 +40,30 @@ export const url = (text: string, url: string | undefined) =>
 
 export type SlackBlock = Array<Divider | Section>;
 
-// hacky function
+// hacky function, so we put error handling in it
 export const slackBlockToString = (block: SlackBlock) => {
-  let str = "";
-  for (const content of block) {
-    if (content.type === "section") {
-      if (content.text !== undefined && typeof content.text.text === "string") {
-        str += content.text.text + "\n";
-      }
-      if (content.fields) {
-        for (const field of content.fields) {
-          str += field.text + "\n";
+  try {
+    let str = "";
+    for (const content of block) {
+      if (content.type === "section") {
+        if (
+          content.text !== undefined &&
+          typeof content.text.text === "string"
+        ) {
+          str += content.text.text + "\n";
         }
+        if (content.fields) {
+          for (const field of content.fields) {
+            str += field.text + "\n";
+          }
+        }
+      } else if (content.type === "divider") {
+        str += "----\n";
       }
-    } else if (content.type === "divider") {
-      str += "----\n";
     }
+    return str.trim();
+  } catch (e) {
+    console.error("Error in slackBlockToString", e);
+    return "";
   }
-  return str.trim();
 };

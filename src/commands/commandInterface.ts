@@ -1,6 +1,7 @@
 import { assertExhaustiveSwitch, EnumValues, makeEnum, val } from "@src/enum";
 import { App, KnownEventFromType, SayFn } from "@slack/bolt";
 import { StringIndexed } from "@slack/bolt/dist/types/helpers";
+import { SlackBlock, slackBlockToString } from "@src/helpers/slack/blocks";
 
 export type AppInstance = App<StringIndexed>;
 export type Message = KnownEventFromType<"message">;
@@ -12,6 +13,7 @@ export const commandEvents = makeEnum({
   Error: val<"Error", any>("Error", ""),
   /** A message to send in thread. */
   Message: val("Message", ""),
+  BlockMessage: val<"BlockMessage", SlackBlock>("BlockMessage", []),
 });
 export type CommandEvents = EnumValues<typeof commandEvents>;
 
@@ -83,6 +85,13 @@ export const registerCommand = (
           return;
         case commandEvents.names.Message:
           await sayThread(event.param);
+          break;
+        case commandEvents.names.BlockMessage:
+          await say({
+            blocks: event.param,
+            text: slackBlockToString(event.param),
+            thread_ts: message.ts,
+          });
           break;
         default:
           assertExhaustiveSwitch(event);

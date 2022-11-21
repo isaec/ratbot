@@ -39,7 +39,18 @@ async function* errorWrapper(iterator: AsyncIterableIterator<CommandEvents>) {
   }
 }
 
-const registerCommand = (app: AppInstance, command: CommandInterface) => {
+/**
+ *
+ * @param app the app instance to register the command with
+ * @param command the command to register
+ * @returns a lambda that returns the last error that was thrown or yielded by the command
+ */
+export const registerCommand = (
+  app: AppInstance,
+  command: CommandInterface
+) => {
+  let errors: ReturnType<typeof commandEvents.Error>[] = [];
+
   app.message(command.commandRegex, async ({ message, say }) => {
     console.log(`${command.name} command detected in ${message.channel}`);
 
@@ -67,6 +78,7 @@ const registerCommand = (app: AppInstance, command: CommandInterface) => {
               e: event.param,
             }
           );
+          errors.push(event.param);
           // in the event of an error we should stop execution of the command
           return;
         case commandEvents.names.Message:
@@ -77,13 +89,6 @@ const registerCommand = (app: AppInstance, command: CommandInterface) => {
       }
     }
   });
-};
 
-export const registerCommands = (
-  app: AppInstance,
-  ...commands: CommandInterface[]
-) => {
-  for (const command of commands) {
-    registerCommand(app, command);
-  }
+  return () => errors;
 };

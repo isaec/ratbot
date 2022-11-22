@@ -28,7 +28,7 @@ const sheet = await doc.sheetsByTitle[
 ];
 
 const headerRowIndex = parseInt(process.env.GSHEET_HEADER_ROW ?? "1");
-const urlColumnIndex = parseInt(process.env.GSHEET_URL_COLUMN ?? "8");
+const urlColumnIndex = parseInt(process.env.GSHEET_URL_COLUMN ?? "9");
 
 await sheet.loadHeaderRow(headerRowIndex);
 

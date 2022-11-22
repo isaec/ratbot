@@ -19,7 +19,7 @@ const registerCommandWithDetails = (
 ) => {
   const errorGetter = registerCommand(app, command);
   registeredCommands.set(command.name, { errorGetter });
-  console.log("registered", command.name);
+  console.log("inject => registered", command.name);
 };
 
 const registerAllCommands = (

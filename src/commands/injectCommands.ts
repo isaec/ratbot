@@ -4,6 +4,7 @@ import {
   CommandInterface,
 } from "@commands/commandInterface";
 import wikithisCommand from "@commands/wikithisCommand";
+import lineCommand from "./lineCommand";
 import ratstatusCommand from "./ratstatusCommand";
 
 type CommandDetails = Readonly<{
@@ -29,5 +30,5 @@ const registerAllCommands = (
 };
 
 export default (app: AppInstance) => {
-  registerAllCommands(app, wikithisCommand, ratstatusCommand);
+  registerAllCommands(app, lineCommand, wikithisCommand, ratstatusCommand);
 };

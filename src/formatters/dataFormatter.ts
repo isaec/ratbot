@@ -1,7 +1,12 @@
-import { HyperlinkDisplayType } from "google-spreadsheet";
+import {
+  section,
+  md,
+  divider,
+  url,
+  SlackBlock,
+} from "@src/helpers/slack/blocks";
 import {
   HyperlinkedPurchaseRequestData,
-  PurchaseRequestData,
   PurchaseRequestKeys,
 } from "../gsheetReader";
 import { formatRange } from "./stringFormatter";
@@ -9,48 +14,6 @@ import { formatRange } from "./stringFormatter";
 const read = (val: string | undefined) => val ?? "N/A";
 
 const displayedKeys: PurchaseRequestKeys[] = ["Price Per", "Qty", "Comments"];
-
-type MarkdownElement = {
-  type: "mrkdwn";
-  text: string;
-};
-
-type Divider = { type: "divider" };
-type Section = {
-  type: "section";
-  text?: MarkdownElement;
-  fields?: MarkdownElement[];
-};
-
-const md = (str: string): MarkdownElement => ({
-  type: "mrkdwn",
-  text: str,
-});
-
-const section: {
-  (fields: MarkdownElement[]): Section;
-  (text: MarkdownElement): Section;
-  (text: MarkdownElement, fields: MarkdownElement[]): Section;
-} = (
-  arg0: MarkdownElement | MarkdownElement[],
-  arg1?: MarkdownElement[]
-): Section =>
-  Array.isArray(arg0)
-    ? { type: "section", fields: arg0 }
-    : arg1 === undefined
-    ? { type: "section", text: arg0 }
-    : { type: "section", text: arg0, fields: arg1 };
-
-const divider = (): Divider => ({ type: "divider" });
-
-const stringProbablyUrlRegex = /^https?:\/\//;
-
-export const url = (text: string, url: string | undefined) =>
-  url === undefined || !stringProbablyUrlRegex.test(url)
-    ? text
-    : `<${url}|${text}>`;
-
-type SlackBlock = Array<Divider | Section>;
 
 export const formatData = ({
   data,
@@ -104,25 +67,3 @@ export const formatDataArray = (
     ]
   ),
 ];
-
-// hacky function
-export const formattedDataArrayToString = (
-  data: ReturnType<typeof formatDataArray>
-) => {
-  let str = "";
-  for (const block of data) {
-    if (block.type === "section") {
-      if (block.text !== undefined && typeof block.text.text === "string") {
-        str += block.text.text + "\n";
-      }
-      if (block.fields) {
-        for (const field of block.fields) {
-          str += field.text + "\n";
-        }
-      }
-    } else if (block.type === "divider") {
-      str += "----\n";
-    }
-  }
-  return str;
-};

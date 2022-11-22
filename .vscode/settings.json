@@ -1,4 +1,11 @@
 {
-  "cSpell.words": ["mrkdwn", "ratbot", "regexes", "Wikiapi", "wikithis"],
+  "cSpell.words": [
+    "mrkdwn",
+    "ratbot",
+    "ratstatus",
+    "regexes",
+    "Wikiapi",
+    "wikithis"
+  ],
   "deno.enablePaths": ["secretify.ts"]
 }

@@ -1,6 +1,7 @@
 import { assertExhaustiveSwitch, EnumValues, makeEnum, val } from "@src/enum";
 import { App, KnownEventFromType, SayFn } from "@slack/bolt";
 import { StringIndexed } from "@slack/bolt/dist/types/helpers";
+import { SlackBlock, slackBlockToString } from "@src/helpers/slack/blocks";
 
 export type AppInstance = App<StringIndexed>;
 export type Message = KnownEventFromType<"message">;
@@ -12,6 +13,7 @@ export const commandEvents = makeEnum({
   Error: val<"Error", any>("Error", ""),
   /** A message to send in thread. */
   Message: val("Message", ""),
+  BlockMessage: val<"BlockMessage", SlackBlock>("BlockMessage", []),
 });
 export type CommandEvents = EnumValues<typeof commandEvents>;
 
@@ -39,7 +41,21 @@ async function* errorWrapper(iterator: AsyncIterableIterator<CommandEvents>) {
   }
 }
 
-const registerCommand = (app: AppInstance, command: CommandInterface) => {
+/**
+ *
+ * @param app the app instance to register the command with
+ * @param command the command to register
+ * @returns a lambda that returns the last error that was thrown or yielded by the command
+ */
+export const registerCommand = (
+  app: AppInstance,
+  command: CommandInterface
+) => {
+  let errors: Readonly<{
+    timestamp: Date;
+    error: any;
+  }>[] = [];
+
   app.message(command.commandRegex, async ({ message, say }) => {
     console.log(`${command.name} command detected in ${message.channel}`);
 
@@ -67,23 +83,24 @@ const registerCommand = (app: AppInstance, command: CommandInterface) => {
               e: event.param,
             }
           );
+          errors.push({ error: event.param, timestamp: new Date() });
           // in the event of an error we should stop execution of the command
           return;
         case commandEvents.names.Message:
           await sayThread(event.param);
+          break;
+        case commandEvents.names.BlockMessage:
+          await say({
+            blocks: event.param,
+            text: slackBlockToString(event.param),
+            thread_ts: message.ts,
+          });
           break;
         default:
           assertExhaustiveSwitch(event);
       }
     }
   });
-};
 
-export const registerCommands = (
-  app: AppInstance,
-  ...commands: CommandInterface[]
-) => {
-  for (const command of commands) {
-    registerCommand(app, command);
-  }
+  return () => errors;
 };

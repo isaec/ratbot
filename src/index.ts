@@ -1,14 +1,12 @@
 import { App } from "@slack/bolt";
 import * as net from "net";
 import * as dotenv from "dotenv";
-import {
-  formatDataArray,
-  formattedDataArrayToString,
-} from "@formatters/dataFormatter";
+import { formatDataArray } from "@formatters/dataFormatter";
 import { accumulate, getAllLines } from "./getAllLines";
 import { readSheetLine } from "./gsheetReader";
 import { channelIterator, DefinedChannel } from "@helpers/slack/channels";
 import injectCommands from "@commands/injectCommands";
+import { slackBlockToString } from "./helpers/slack/blocks";
 
 dotenv.config();
 
@@ -38,7 +36,7 @@ app.message(/lines?\s*\d+/, async ({ message, say }) => {
     const formattedData = formatDataArray(lineData);
 
     // make string version of data
-    const str = formattedDataArrayToString(formattedData);
+    const str = slackBlockToString(formattedData);
 
     await say({
       blocks: formattedData,

@@ -10,6 +10,9 @@ processes = []
   SLACK_CHANNEL_PAGINATE_DELAY=3000
   SLACK_CHANNEL_ITERATE_DELAY=1500
   SUPPORT_HEALTH_CHECK=true
+  GSHEET_SHEET_TITLE="purchase requests"
+  GSHEET_HEADER_ROW=3
+  GSHEET_URL_COLUMN=9
 
 [experimental]
   allowed_public_ports = []

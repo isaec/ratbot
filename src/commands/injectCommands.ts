@@ -4,6 +4,7 @@ import {
   CommandInterface,
 } from "@commands/commandInterface";
 import wikithisCommand from "@commands/wikithisCommand";
+import lineCommand from "./lineCommand";
 import ratstatusCommand from "./ratstatusCommand";
 
 type CommandDetails = Readonly<{
@@ -18,7 +19,7 @@ const registerCommandWithDetails = (
 ) => {
   const errorGetter = registerCommand(app, command);
   registeredCommands.set(command.name, { errorGetter });
-  console.log("registered", command.name);
+  console.log("inject => registered", command.name);
 };
 
 const registerAllCommands = (
@@ -29,5 +30,5 @@ const registerAllCommands = (
 };
 
 export default (app: AppInstance) => {
-  registerAllCommands(app, wikithisCommand, ratstatusCommand);
+  registerAllCommands(app, lineCommand, wikithisCommand, ratstatusCommand);
 };

@@ -10,9 +10,9 @@ import {
   creationResult,
   getUrlFromTitle,
 } from "@helpers/wiki/createPage";
-import { url } from "@formatters/dataFormatter";
 import { channelMap } from "@src/helpers/slack/channels";
 import replaceAsync from "string-replace-async";
+import { url } from "@src/helpers/slack/blocks";
 
 const wikithisRegex = /^\.wikithis\s+(.*)$/i;
 

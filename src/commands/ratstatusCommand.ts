@@ -7,22 +7,32 @@ export default {
   howToUse: ".ratstatus",
   commandRegex: /^\.ratstatus$/i,
   executer: async function* (app, { message, say }) {
-    yield commandEvents.Message("querying ratbot status details...");
-    const details: SlackBlock = [];
+    yield commandEvents.Message(
+      `querying ratbot status details at *${new Date().toLocaleTimeString()}*`
+    );
     for (const [name, { errorGetter }] of registeredCommands) {
-      const errors = errorGetter();
-      if (errors.length === 0) {
-        details.push(section(md(`command *${name}* is loaded and healthy`)));
+      const errorObjects = errorGetter();
+      if (errorObjects.length === 0) {
+        yield commandEvents.Message(`command *${name}* is loaded and healthy`);
       } else {
-        details.push(
+        yield commandEvents.BlockMessage([
           section([
-            md(`command *${name}* is loaded but has errors`),
-            md(`errors:`),
-            ...errors.map((e) => md(`${e}`)),
-          ])
-        );
+            md(`command *${name}* is loaded but has top level errors`),
+            md(`*errors:*`),
+            ...errorObjects.map((errorObject) =>
+              md(
+                `*[${errorObject.timestamp.toLocaleTimeString()}]* ${
+                  errorObject.error
+                }${
+                  errorObject.error.stack !== undefined
+                    ? `\n\`\`\`${errorObject.error.stack}\`\`\``
+                    : ""
+                }`
+              )
+            ),
+          ]),
+        ]);
       }
     }
-    yield commandEvents.BlockMessage(details);
   },
 } as CommandInterface;

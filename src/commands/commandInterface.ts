@@ -51,7 +51,10 @@ export const registerCommand = (
   app: AppInstance,
   command: CommandInterface
 ) => {
-  let errors: ReturnType<typeof commandEvents.Error>[] = [];
+  let errors: Readonly<{
+    timestamp: Date;
+    error: any;
+  }>[] = [];
 
   app.message(command.commandRegex, async ({ message, say }) => {
     console.log(`${command.name} command detected in ${message.channel}`);
@@ -80,7 +83,7 @@ export const registerCommand = (
               e: event.param,
             }
           );
-          errors.push(event.param);
+          errors.push({ error: event.param, timestamp: new Date() });
           // in the event of an error we should stop execution of the command
           return;
         case commandEvents.names.Message:

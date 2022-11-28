@@ -15,7 +15,7 @@ describe("formatVote", () => {
     expect(formatVote(voteData)).toMatchSnapshot();
   });
   test("userMock", async () => {
-    expect(await getDetailsFromUserId(null as any, "U")).toMatchInlineSnapshot(
+    expect(await getDetailsFromUserId(null, "U")).toMatchInlineSnapshot(
       `
       {
         "id": "U",

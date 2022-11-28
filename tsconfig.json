@@ -9,6 +9,7 @@
     },
     "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "strict": true
   }
 }

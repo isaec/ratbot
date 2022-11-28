@@ -1,0 +1,102 @@
+// Vitest Snapshot v1
+
+exports[`getAllLines( Requesting approval for line 102-104 need belts for 2nd intake and spares.) 1`] = `
+[
+  102,
+  103,
+  104,
+]
+`;
+
+exports[`getAllLines( Requesting approval for lines 117-118 for prototyping bolts and wing nuts 
+ Currently the bolts are button head and I'm not too sure if those are better than socket heads and the ones on the sheet are fully threaded) 1`] = `
+[
+  117,
+  118,
+]
+`;
+
+exports[`getAllLines( Seeking approval for line 96 for 1/4-20 drill tap bits) 1`] = `
+[
+  96,
+]
+`;
+
+exports[`getAllLines( seeking approval for lines 134 and 135. are the 3 1/2 needles the correct types we need?) 1`] = `
+[
+  134,
+  135,
+]
+`;
+
+exports[`getAllLines(Seeking approval for line 99-bolt extractors for falcon stripped screws) 1`] = `
+[
+  99,
+]
+`;
+
+exports[`getAllLines(Seeking approval for lines 86 and 87 (parts to fix swerve modules)) 1`] = `
+[
+  86,
+  87,
+]
+`;
+
+exports[`getAllLines(req approval for lines 129-130 (surgical tubing, diff ID). Same ones ordered as last year) 1`] = `
+[
+  129,
+  130,
+]
+`;
+
+exports[`getAllLines(requesting approval for line 88 for wheels for second intake shooter roller to swap if needed) 1`] = `
+[
+  88,
+]
+`;
+
+exports[`getAllLines(requesting approval for lines 89-91 for wheels for second intake shooter roller to swap if needed) 1`] = `
+[
+  89,
+  90,
+  91,
+]
+`;
+
+exports[`getAllLines(requesting mentor approval for line 93 (edited)) 1`] = `
+[
+  93,
+]
+`;
+
+exports[`getAllLines(seeking approval for lines 16-18 and 22) 1`] = `
+[
+  16,
+  17,
+  18,
+  22,
+]
+`;
+
+exports[`getAllLines(seeking approval for lines 112-114) 1`] = `
+[
+  112,
+  113,
+  114,
+]
+`;
+
+exports[`getAllLines(seeking approval for lines 125-127, bumper fabric for onseason and shoulder bolt for swerve (edited) ) 1`] = `
+[
+  125,
+  126,
+  127,
+]
+`;
+
+exports[`getAllLines(seeking approval line 122 & 124) 1`] = `
+[
+  122,
+  124,
+]
+`;

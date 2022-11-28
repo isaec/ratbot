@@ -1,0 +1,554 @@
+// Vitest Snapshot v1
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
+  against: [ 'isaac', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
+  against: [ 'isaac', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
+  against: [ 'jasmine', 'isaac', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
+  against: [ 'jasmine', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
+  against: [ 'jasmine', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
+  against: [ 'zach', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
+  against: [ [length]: 0 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'mark', [length]: 2 ],
+  against: [ 'isaac', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'mark', [length]: 2 ],
+  against: [ 'isaac', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'mark', [length]: 2 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'mark', [length]: 2 ],
+  against: [ 'jasmine', 'isaac', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'mark', [length]: 2 ],
+  against: [ 'jasmine', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'mark', [length]: 2 ],
+  against: [ 'jasmine', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'mark', [length]: 2 ],
+  against: [ 'zach', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'taylor', [length]: 2 ],
+  against: [ 'isaac', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'taylor', [length]: 2 ],
+  against: [ 'isaac', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'taylor', [length]: 2 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'taylor', [length]: 2 ],
+  against: [ 'jasmine', 'isaac', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'taylor', [length]: 2 ],
+  against: [ 'jasmine', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'taylor', [length]: 2 ],
+  against: [ 'jasmine', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', 'taylor', [length]: 2 ],
+  against: [ 'zach', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', [length]: 1 ],
+  against: [ 'isaac', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', [length]: 1 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', [length]: 1 ],
+  against: [ 'jasmine', 'isaac', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'andy', [length]: 1 ],
+  against: [ 'jasmine', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
+  against: [ 'isaac', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
+  against: [ 'isaac', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
+  against: [ 'jasmine', 'isaac', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
+  against: [ 'jasmine', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
+  against: [ 'jasmine', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
+  against: [ 'zach', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
+  against: [ [length]: 0 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
+  against: [ 'isaac', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
+  against: [ 'isaac', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
+  against: [ 'jasmine', 'isaac', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
+  against: [ 'jasmine', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
+  against: [ 'jasmine', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
+  against: [ 'zach', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
+  against: [ [length]: 0 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
+  against: [ 'isaac', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
+  against: [ 'isaac', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
+  against: [ 'jasmine', 'isaac', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
+  against: [ 'jasmine', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
+  against: [ 'jasmine', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
+  against: [ 'zach', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
+  against: [ [length]: 0 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', [length]: 2 ],
+  against: [ 'isaac', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', [length]: 2 ],
+  against: [ 'isaac', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', [length]: 2 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', [length]: 2 ],
+  against: [ 'jasmine', 'isaac', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', [length]: 2 ],
+  against: [ 'jasmine', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', [length]: 2 ],
+  against: [ 'jasmine', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'andy', [length]: 2 ],
+  against: [ 'zach', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
+  against: [ 'isaac', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
+  against: [ 'isaac', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
+  against: [ 'jasmine', 'isaac', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
+  against: [ 'jasmine', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
+  against: [ 'jasmine', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
+  against: [ 'zach', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
+  against: [ [length]: 0 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'mark', [length]: 2 ],
+  against: [ 'isaac', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'mark', [length]: 2 ],
+  against: [ 'isaac', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'mark', [length]: 2 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'mark', [length]: 2 ],
+  against: [ 'jasmine', 'isaac', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'mark', [length]: 2 ],
+  against: [ 'jasmine', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'mark', [length]: 2 ],
+  against: [ 'jasmine', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'mark', [length]: 2 ],
+  against: [ 'zach', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'taylor', [length]: 2 ],
+  against: [ 'isaac', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'taylor', [length]: 2 ],
+  against: [ 'isaac', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'taylor', [length]: 2 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'taylor', [length]: 2 ],
+  against: [ 'jasmine', 'isaac', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'taylor', [length]: 2 ],
+  against: [ 'jasmine', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'taylor', [length]: 2 ],
+  against: [ 'jasmine', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', 'taylor', [length]: 2 ],
+  against: [ 'zach', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', [length]: 1 ],
+  against: [ 'isaac', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', [length]: 1 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', [length]: 1 ],
+  against: [ 'jasmine', 'isaac', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'ian', [length]: 1 ],
+  against: [ 'jasmine', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'mark', 'taylor', [length]: 2 ],
+  against: [ 'isaac', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'mark', 'taylor', [length]: 2 ],
+  against: [ 'isaac', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'mark', 'taylor', [length]: 2 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'mark', 'taylor', [length]: 2 ],
+  against: [ 'jasmine', 'isaac', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'mark', 'taylor', [length]: 2 ],
+  against: [ 'jasmine', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'mark', 'taylor', [length]: 2 ],
+  against: [ 'jasmine', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'mark', 'taylor', [length]: 2 ],
+  against: [ 'zach', [length]: 1 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'mark', [length]: 1 ],
+  against: [ 'isaac', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'mark', [length]: 1 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'mark', [length]: 1 ],
+  against: [ 'jasmine', 'isaac', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'mark', [length]: 1 ],
+  against: [ 'jasmine', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'taylor', [length]: 1 ],
+  against: [ 'isaac', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'taylor', [length]: 1 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'taylor', [length]: 1 ],
+  against: [ 'jasmine', 'isaac', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ 'taylor', [length]: 1 ],
+  against: [ 'jasmine', 'zach', [length]: 2 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({
+  for: [ [length]: 0 ],
+  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
+}) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'andy', 'mark', [length]: 2 ], against: [ [length]: 0 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'andy', 'taylor', [length]: 2 ], against: [ [length]: 0 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'andy', [length]: 1 ], against: [ 'isaac', [length]: 1 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'andy', [length]: 1 ], against: [ 'jasmine', [length]: 1 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'andy', [length]: 1 ], against: [ 'zach', [length]: 1 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'andy', [length]: 1 ], against: [ [length]: 0 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'ian', 'andy', [length]: 2 ], against: [ [length]: 0 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'ian', 'mark', [length]: 2 ], against: [ [length]: 0 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'ian', 'taylor', [length]: 2 ], against: [ [length]: 0 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'ian', [length]: 1 ], against: [ 'isaac', [length]: 1 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'ian', [length]: 1 ], against: [ 'jasmine', [length]: 1 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'ian', [length]: 1 ], against: [ 'zach', [length]: 1 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'ian', [length]: 1 ], against: [ [length]: 0 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'mark', 'taylor', [length]: 2 ], against: [ [length]: 0 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'mark', [length]: 1 ], against: [ 'isaac', [length]: 1 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'mark', [length]: 1 ], against: [ 'jasmine', [length]: 1 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'mark', [length]: 1 ], against: [ 'zach', [length]: 1 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'mark', [length]: 1 ], against: [ [length]: 0 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'taylor', [length]: 1 ], against: [ 'isaac', [length]: 1 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'taylor', [length]: 1 ], against: [ 'jasmine', [length]: 1 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'taylor', [length]: 1 ], against: [ 'zach', [length]: 1 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ 'taylor', [length]: 1 ], against: [ [length]: 0 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'isaac', 'zach', [length]: 2 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'isaac', [length]: 1 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'jasmine', 'isaac', [length]: 2 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'jasmine', 'zach', [length]: 2 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'jasmine', [length]: 1 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'zach', [length]: 1 ] }) 1`] = `null`;
+
+exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ [length]: 0 ] }) 1`] = `null`;

@@ -1,26 +1,21 @@
+import { AppInstance } from "@src/commands/commandInterface";
 import { getDetailsFromUserId } from "@src/helpers/slack/users";
+import { fakeUserIdArray } from "@src/helpers/slack/__mocks__/users";
 import { generate, some } from "generate-combinations";
 import { describe, expect, test, vi } from "vitest";
 import { formatVote, VoteData } from "./voteFormatter";
 
 vi.mock("@src/helpers/slack/users");
 
+const fakeApp = null as any as AppInstance;
+
 const voteData = generate<VoteData>({
-  for: some(["ian", "andy", "mark", "taylor"]),
-  against: some(["jasmine", "isaac", "zach"]),
+  for: some(fakeUserIdArray.slice(0, 3)),
+  against: some(fakeUserIdArray.slice(3, 6)),
 });
 
 describe("formatVote", () => {
-  test.each(voteData)("formatVote(%o)", (voteData) => {
-    expect(formatVote(voteData)).toMatchSnapshot();
-  });
-  test("userMock", async () => {
-    expect(await getDetailsFromUserId(null, "U")).toMatchInlineSnapshot(
-      `
-      {
-        "id": "U",
-      }
-    `
-    );
+  test.each(voteData)("formatVote(%o)", async (voteData) => {
+    expect(await formatVote(fakeApp, voteData)).toMatchSnapshot();
   });
 });

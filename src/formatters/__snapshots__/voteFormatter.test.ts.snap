@@ -1,554 +1,1136 @@
 // Vitest Snapshot v1
 
 exports[`formatVote > formatVote({
-  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
-  against: [ 'isaac', 'zach', [length]: 2 ]
-}) 1`] = `null`;
+  for: [ 'U1ABCD', 'U2ABCD', 'U3ABCD', [length]: 3 ],
+  against: [ 'U4ABCD', 'U5ABCD', 'U6ABCD', [length]: 3 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last, Andy Something and Mark EEEE
+Against: Taylor Woo!, Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
 exports[`formatVote > formatVote({
-  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
-  against: [ 'isaac', [length]: 1 ]
-}) 1`] = `null`;
+  for: [ 'U1ABCD', 'U2ABCD', 'U3ABCD', [length]: 3 ],
+  against: [ 'U4ABCD', 'U5ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last, Andy Something and Mark EEEE
+Against: Taylor Woo! and Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
 exports[`formatVote > formatVote({
-  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
+  for: [ 'U1ABCD', 'U2ABCD', 'U3ABCD', [length]: 3 ],
+  against: [ 'U4ABCD', 'U6ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last, Andy Something and Mark EEEE
+Against: Taylor Woo! and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
 exports[`formatVote > formatVote({
-  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
-  against: [ 'jasmine', 'isaac', [length]: 2 ]
-}) 1`] = `null`;
+  for: [ 'U1ABCD', 'U2ABCD', 'U3ABCD', [length]: 3 ],
+  against: [ 'U4ABCD', [length]: 1 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last, Andy Something and Mark EEEE
+Against: Taylor Woo!",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
 exports[`formatVote > formatVote({
-  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
-  against: [ 'jasmine', 'zach', [length]: 2 ]
-}) 1`] = `null`;
+  for: [ 'U1ABCD', 'U2ABCD', 'U3ABCD', [length]: 3 ],
+  against: [ 'U5ABCD', 'U6ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last, Andy Something and Mark EEEE
+Against: Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
 exports[`formatVote > formatVote({
-  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
-  against: [ 'jasmine', [length]: 1 ]
-}) 1`] = `null`;
+  for: [ 'U1ABCD', 'U2ABCD', 'U3ABCD', [length]: 3 ],
+  against: [ 'U5ABCD', [length]: 1 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last, Andy Something and Mark EEEE
+Against: Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
 exports[`formatVote > formatVote({
-  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
-  against: [ 'zach', [length]: 1 ]
-}) 1`] = `null`;
+  for: [ 'U1ABCD', 'U2ABCD', 'U3ABCD', [length]: 3 ],
+  against: [ 'U6ABCD', [length]: 1 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last, Andy Something and Mark EEEE
+Against: Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
 exports[`formatVote > formatVote({
-  for: [ 'andy', 'mark', 'taylor', [length]: 3 ],
+  for: [ 'U1ABCD', 'U2ABCD', 'U3ABCD', [length]: 3 ],
   against: [ [length]: 0 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', 'mark', [length]: 2 ],
-  against: [ 'isaac', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', 'mark', [length]: 2 ],
-  against: [ 'isaac', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', 'mark', [length]: 2 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', 'mark', [length]: 2 ],
-  against: [ 'jasmine', 'isaac', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', 'mark', [length]: 2 ],
-  against: [ 'jasmine', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', 'mark', [length]: 2 ],
-  against: [ 'jasmine', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', 'mark', [length]: 2 ],
-  against: [ 'zach', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', 'taylor', [length]: 2 ],
-  against: [ 'isaac', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', 'taylor', [length]: 2 ],
-  against: [ 'isaac', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', 'taylor', [length]: 2 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', 'taylor', [length]: 2 ],
-  against: [ 'jasmine', 'isaac', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', 'taylor', [length]: 2 ],
-  against: [ 'jasmine', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', 'taylor', [length]: 2 ],
-  against: [ 'jasmine', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', 'taylor', [length]: 2 ],
-  against: [ 'zach', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', [length]: 1 ],
-  against: [ 'isaac', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', [length]: 1 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', [length]: 1 ],
-  against: [ 'jasmine', 'isaac', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'andy', [length]: 1 ],
-  against: [ 'jasmine', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
-  against: [ 'isaac', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
-  against: [ 'isaac', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
-  against: [ 'jasmine', 'isaac', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
-  against: [ 'jasmine', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
-  against: [ 'jasmine', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
-  against: [ 'zach', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', 'taylor', [length]: 4 ],
-  against: [ [length]: 0 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
-  against: [ 'isaac', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
-  against: [ 'isaac', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
-  against: [ 'jasmine', 'isaac', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
-  against: [ 'jasmine', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
-  against: [ 'jasmine', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
-  against: [ 'zach', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'mark', [length]: 3 ],
-  against: [ [length]: 0 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
-  against: [ 'isaac', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
-  against: [ 'isaac', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
-  against: [ 'jasmine', 'isaac', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
-  against: [ 'jasmine', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
-  against: [ 'jasmine', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
-  against: [ 'zach', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', 'taylor', [length]: 3 ],
-  against: [ [length]: 0 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', [length]: 2 ],
-  against: [ 'isaac', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', [length]: 2 ],
-  against: [ 'isaac', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', [length]: 2 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', [length]: 2 ],
-  against: [ 'jasmine', 'isaac', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', [length]: 2 ],
-  against: [ 'jasmine', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', [length]: 2 ],
-  against: [ 'jasmine', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'andy', [length]: 2 ],
-  against: [ 'zach', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
-  against: [ 'isaac', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
-  against: [ 'isaac', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
-  against: [ 'jasmine', 'isaac', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
-  against: [ 'jasmine', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
-  against: [ 'jasmine', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
-  against: [ 'zach', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'mark', 'taylor', [length]: 3 ],
-  against: [ [length]: 0 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'mark', [length]: 2 ],
-  against: [ 'isaac', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'mark', [length]: 2 ],
-  against: [ 'isaac', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'mark', [length]: 2 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'mark', [length]: 2 ],
-  against: [ 'jasmine', 'isaac', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'mark', [length]: 2 ],
-  against: [ 'jasmine', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'mark', [length]: 2 ],
-  against: [ 'jasmine', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'mark', [length]: 2 ],
-  against: [ 'zach', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'taylor', [length]: 2 ],
-  against: [ 'isaac', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'taylor', [length]: 2 ],
-  against: [ 'isaac', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'taylor', [length]: 2 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'taylor', [length]: 2 ],
-  against: [ 'jasmine', 'isaac', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'taylor', [length]: 2 ],
-  against: [ 'jasmine', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'taylor', [length]: 2 ],
-  against: [ 'jasmine', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', 'taylor', [length]: 2 ],
-  against: [ 'zach', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', [length]: 1 ],
-  against: [ 'isaac', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', [length]: 1 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', [length]: 1 ],
-  against: [ 'jasmine', 'isaac', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'ian', [length]: 1 ],
-  against: [ 'jasmine', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'mark', 'taylor', [length]: 2 ],
-  against: [ 'isaac', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'mark', 'taylor', [length]: 2 ],
-  against: [ 'isaac', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'mark', 'taylor', [length]: 2 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'mark', 'taylor', [length]: 2 ],
-  against: [ 'jasmine', 'isaac', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'mark', 'taylor', [length]: 2 ],
-  against: [ 'jasmine', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'mark', 'taylor', [length]: 2 ],
-  against: [ 'jasmine', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'mark', 'taylor', [length]: 2 ],
-  against: [ 'zach', [length]: 1 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'mark', [length]: 1 ],
-  against: [ 'isaac', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'mark', [length]: 1 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'mark', [length]: 1 ],
-  against: [ 'jasmine', 'isaac', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'mark', [length]: 1 ],
-  against: [ 'jasmine', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'taylor', [length]: 1 ],
-  against: [ 'isaac', 'zach', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'taylor', [length]: 1 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'taylor', [length]: 1 ],
-  against: [ 'jasmine', 'isaac', [length]: 2 ]
-}) 1`] = `null`;
-
-exports[`formatVote > formatVote({
-  for: [ 'taylor', [length]: 1 ],
-  against: [ 'jasmine', 'zach', [length]: 2 ]
-}) 1`] = `null`;
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last, Andy Something and Mark EEEE",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', 'U2ABCD', [length]: 2 ],
+  against: [ 'U4ABCD', 'U5ABCD', 'U6ABCD', [length]: 3 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Andy Something
+Against: Taylor Woo!, Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', 'U2ABCD', [length]: 2 ],
+  against: [ 'U4ABCD', 'U5ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Andy Something
+Against: Taylor Woo! and Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', 'U2ABCD', [length]: 2 ],
+  against: [ 'U4ABCD', 'U6ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Andy Something
+Against: Taylor Woo! and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', 'U2ABCD', [length]: 2 ],
+  against: [ 'U4ABCD', [length]: 1 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Andy Something
+Against: Taylor Woo!",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', 'U2ABCD', [length]: 2 ],
+  against: [ 'U5ABCD', 'U6ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Andy Something
+Against: Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', 'U2ABCD', [length]: 2 ],
+  against: [ 'U5ABCD', [length]: 1 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Andy Something
+Against: Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', 'U2ABCD', [length]: 2 ],
+  against: [ 'U6ABCD', [length]: 1 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Andy Something
+Against: Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', 'U3ABCD', [length]: 2 ],
+  against: [ 'U4ABCD', 'U5ABCD', 'U6ABCD', [length]: 3 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Mark EEEE
+Against: Taylor Woo!, Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', 'U3ABCD', [length]: 2 ],
+  against: [ 'U4ABCD', 'U5ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Mark EEEE
+Against: Taylor Woo! and Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', 'U3ABCD', [length]: 2 ],
+  against: [ 'U4ABCD', 'U6ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Mark EEEE
+Against: Taylor Woo! and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', 'U3ABCD', [length]: 2 ],
+  against: [ 'U4ABCD', [length]: 1 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Mark EEEE
+Against: Taylor Woo!",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', 'U3ABCD', [length]: 2 ],
+  against: [ 'U5ABCD', 'U6ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Mark EEEE
+Against: Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', 'U3ABCD', [length]: 2 ],
+  against: [ 'U5ABCD', [length]: 1 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Mark EEEE
+Against: Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', 'U3ABCD', [length]: 2 ],
+  against: [ 'U6ABCD', [length]: 1 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Mark EEEE
+Against: Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', [length]: 1 ],
+  against: [ 'U4ABCD', 'U5ABCD', 'U6ABCD', [length]: 3 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last
+Against: Taylor Woo!, Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', [length]: 1 ],
+  against: [ 'U4ABCD', 'U5ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last
+Against: Taylor Woo! and Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', [length]: 1 ],
+  against: [ 'U4ABCD', 'U6ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last
+Against: Taylor Woo! and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U1ABCD', [length]: 1 ],
+  against: [ 'U5ABCD', 'U6ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last
+Against: Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U2ABCD', 'U3ABCD', [length]: 2 ],
+  against: [ 'U4ABCD', 'U5ABCD', 'U6ABCD', [length]: 3 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something and Mark EEEE
+Against: Taylor Woo!, Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U2ABCD', 'U3ABCD', [length]: 2 ],
+  against: [ 'U4ABCD', 'U5ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something and Mark EEEE
+Against: Taylor Woo! and Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U2ABCD', 'U3ABCD', [length]: 2 ],
+  against: [ 'U4ABCD', 'U6ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something and Mark EEEE
+Against: Taylor Woo! and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U2ABCD', 'U3ABCD', [length]: 2 ],
+  against: [ 'U4ABCD', [length]: 1 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something and Mark EEEE
+Against: Taylor Woo!",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U2ABCD', 'U3ABCD', [length]: 2 ],
+  against: [ 'U5ABCD', 'U6ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something and Mark EEEE
+Against: Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U2ABCD', 'U3ABCD', [length]: 2 ],
+  against: [ 'U5ABCD', [length]: 1 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something and Mark EEEE
+Against: Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U2ABCD', 'U3ABCD', [length]: 2 ],
+  against: [ 'U6ABCD', [length]: 1 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something and Mark EEEE
+Against: Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U2ABCD', [length]: 1 ],
+  against: [ 'U4ABCD', 'U5ABCD', 'U6ABCD', [length]: 3 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something
+Against: Taylor Woo!, Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U2ABCD', [length]: 1 ],
+  against: [ 'U4ABCD', 'U5ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something
+Against: Taylor Woo! and Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U2ABCD', [length]: 1 ],
+  against: [ 'U4ABCD', 'U6ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something
+Against: Taylor Woo! and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U2ABCD', [length]: 1 ],
+  against: [ 'U5ABCD', 'U6ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something
+Against: Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U3ABCD', [length]: 1 ],
+  against: [ 'U4ABCD', 'U5ABCD', 'U6ABCD', [length]: 3 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Mark EEEE
+Against: Taylor Woo!, Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U3ABCD', [length]: 1 ],
+  against: [ 'U4ABCD', 'U5ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Mark EEEE
+Against: Taylor Woo! and Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U3ABCD', [length]: 1 ],
+  against: [ 'U4ABCD', 'U6ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Mark EEEE
+Against: Taylor Woo! and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
+
+exports[`formatVote > formatVote({
+  for: [ 'U3ABCD', [length]: 1 ],
+  against: [ 'U5ABCD', 'U6ABCD', [length]: 2 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Mark EEEE
+Against: Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
 exports[`formatVote > formatVote({
   for: [ [length]: 0 ],
-  against: [ 'jasmine', 'isaac', 'zach', [length]: 3 ]
-}) 1`] = `null`;
+  against: [ 'U4ABCD', 'U5ABCD', 'U6ABCD', [length]: 3 ]
+}) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "Against: Taylor Woo!, Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'andy', 'mark', [length]: 2 ], against: [ [length]: 0 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ 'U1ABCD', 'U2ABCD', [length]: 2 ], against: [ [length]: 0 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Andy Something",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'andy', 'taylor', [length]: 2 ], against: [ [length]: 0 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ 'U1ABCD', 'U3ABCD', [length]: 2 ], against: [ [length]: 0 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last and Mark EEEE",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'andy', [length]: 1 ], against: [ 'isaac', [length]: 1 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ 'U1ABCD', [length]: 1 ], against: [ 'U4ABCD', [length]: 1 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last
+Against: Taylor Woo!",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'andy', [length]: 1 ], against: [ 'jasmine', [length]: 1 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ 'U1ABCD', [length]: 1 ], against: [ 'U5ABCD', [length]: 1 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last
+Against: Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'andy', [length]: 1 ], against: [ 'zach', [length]: 1 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ 'U1ABCD', [length]: 1 ], against: [ 'U6ABCD', [length]: 1 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last
+Against: Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'andy', [length]: 1 ], against: [ [length]: 0 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ 'U1ABCD', [length]: 1 ], against: [ [length]: 0 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Ian Last",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'ian', 'andy', [length]: 2 ], against: [ [length]: 0 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ 'U2ABCD', 'U3ABCD', [length]: 2 ], against: [ [length]: 0 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something and Mark EEEE",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'ian', 'mark', [length]: 2 ], against: [ [length]: 0 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ 'U2ABCD', [length]: 1 ], against: [ 'U4ABCD', [length]: 1 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something
+Against: Taylor Woo!",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'ian', 'taylor', [length]: 2 ], against: [ [length]: 0 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ 'U2ABCD', [length]: 1 ], against: [ 'U5ABCD', [length]: 1 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something
+Against: Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'ian', [length]: 1 ], against: [ 'isaac', [length]: 1 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ 'U2ABCD', [length]: 1 ], against: [ 'U6ABCD', [length]: 1 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something
+Against: Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'ian', [length]: 1 ], against: [ 'jasmine', [length]: 1 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ 'U2ABCD', [length]: 1 ], against: [ [length]: 0 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Andy Something",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'ian', [length]: 1 ], against: [ 'zach', [length]: 1 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ 'U3ABCD', [length]: 1 ], against: [ 'U4ABCD', [length]: 1 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Mark EEEE
+Against: Taylor Woo!",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'ian', [length]: 1 ], against: [ [length]: 0 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ 'U3ABCD', [length]: 1 ], against: [ 'U5ABCD', [length]: 1 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Mark EEEE
+Against: Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'mark', 'taylor', [length]: 2 ], against: [ [length]: 0 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ 'U3ABCD', [length]: 1 ], against: [ 'U6ABCD', [length]: 1 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Mark EEEE
+Against: Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'mark', [length]: 1 ], against: [ 'isaac', [length]: 1 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ 'U3ABCD', [length]: 1 ], against: [ [length]: 0 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "For: Mark EEEE",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'mark', [length]: 1 ], against: [ 'jasmine', [length]: 1 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'U4ABCD', 'U5ABCD', [length]: 2 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "Against: Taylor Woo! and Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'mark', [length]: 1 ], against: [ 'zach', [length]: 1 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'U4ABCD', 'U6ABCD', [length]: 2 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "Against: Taylor Woo! and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'mark', [length]: 1 ], against: [ [length]: 0 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'U4ABCD', [length]: 1 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "Against: Taylor Woo!",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'taylor', [length]: 1 ], against: [ 'isaac', [length]: 1 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'U5ABCD', 'U6ABCD', [length]: 2 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "Against: Jasmine and Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'taylor', [length]: 1 ], against: [ 'jasmine', [length]: 1 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'U5ABCD', [length]: 1 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "Against: Jasmine",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'taylor', [length]: 1 ], against: [ 'zach', [length]: 1 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'U6ABCD', [length]: 1 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "Against: Isaac",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;
 
-exports[`formatVote > formatVote({ for: [ 'taylor', [length]: 1 ], against: [ [length]: 0 ] }) 1`] = `null`;
-
-exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'isaac', 'zach', [length]: 2 ] }) 1`] = `null`;
-
-exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'isaac', [length]: 1 ] }) 1`] = `null`;
-
-exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'jasmine', 'isaac', [length]: 2 ] }) 1`] = `null`;
-
-exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'jasmine', 'zach', [length]: 2 ] }) 1`] = `null`;
-
-exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'jasmine', [length]: 1 ] }) 1`] = `null`;
-
-exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ 'zach', [length]: 1 ] }) 1`] = `null`;
-
-exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ [length]: 0 ] }) 1`] = `null`;
+exports[`formatVote > formatVote({ for: [ [length]: 0 ], against: [ [length]: 0 ] }) 1`] = `
+[
+  {
+    "type": "divider",
+  },
+  {
+    "text": {
+      "text": "",
+      "type": "mrkdwn",
+    },
+    "type": "section",
+  },
+]
+`;

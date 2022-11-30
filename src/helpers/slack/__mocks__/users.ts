@@ -28,10 +28,6 @@ export const fakeUserIdArray = Array.from(fakeUserMap.keys()) as Readonly<
 >;
 
 export const getDetailsFromUserId: GetDetailsFromUserIdFunction = async (
-  app,
+  _app,
   userId
-) => {
-  return {
-    id: "U",
-  };
-};
+) => fakeUserMap.get(userId as FakeUser);

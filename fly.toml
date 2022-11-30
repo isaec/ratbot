@@ -13,6 +13,7 @@ processes = []
   GSHEET_SHEET_TITLE="purchase requests"
   GSHEET_HEADER_ROW=3
   GSHEET_URL_COLUMN=9
+  PURCHASE_ANNOUNCEMENT_THRESHOLD=300
 
 [experimental]
   allowed_public_ports = []

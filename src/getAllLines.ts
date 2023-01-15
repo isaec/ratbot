@@ -1,3 +1,5 @@
+// this collection adds the first match group to the set
+
 /**
  * matches "line 1234" but not "line 1234 and"
  */
@@ -7,11 +9,14 @@ const lineAndCharacter = /lines?\s(\d+)[,.;:!]/g;
 
 const singleHyphenatedLine = /lines?\s(\d+)-(?!\d)/g;
 
-const lineRange = /lines?\s(\d+)-(\d+)/g;
+const finalValueOfGroup = /lines?\s(?:\d+(?:-|and|&|\s)?)*and (\d+)/g;
+
+// this collection requires special interpolation
+const lineRange = /lines?\s(\d+)\s?-\s?(\d+)/g;
 
 const lineAndLine = /lines?\s(\d+)\s(?:and|&|\+)\s(\d+)/g;
 
-const finalValueOfGroup = /lines?\s(?:\d+(?:-|and|&|\s)?)*and (\d+)/g;
+const spaceLineValues = /lines?\s+(\d+)(?:\s+(\d+)(?:\s+(\d+))?)?/g;
 
 const runRegexes = (
   string: string,
@@ -52,6 +57,13 @@ export const getAllLines = (text: string): Set<number> => {
     if (typeof match[1] === "string" && typeof match[2] === "string") {
       lines.add(parseInt(match[1]));
       lines.add(parseInt(match[2]));
+    }
+  }
+  for (const match of text.matchAll(spaceLineValues)) {
+    for (let i = 1; i < match.length; i++) {
+      if (typeof match[i] === "string") {
+        lines.add(parseInt(match[i]));
+      }
     }
   }
 

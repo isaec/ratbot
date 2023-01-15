@@ -36,6 +36,7 @@ this is based on balls missed in teleop during madtown, we can do better.`,
     [236, 237],
   ],
   [`Req approval for lines 199 120  130`, [120, 130, 199]],
+  [`Seeking approval for lines 199, 200 and 201`, [199, 200, 201]],
 ])(`getAllLines(%s)`, (text, expected) => {
   expect(setToSortedArray(getAllLines(text))).toEqual(expected);
 });

@@ -16,7 +16,11 @@ const lineRange = /lines?\s(\d+)\s?-\s?(\d+)/g;
 
 const lineAndLine = /lines?\s(\d+)\s(?:and|&|\+)\s(\d+)/g;
 
-const spaceLineValues = /lines?\s+(\d+)(?:\s+(\d+)(?:\s+(\d+))?)?/g;
+// this one is a two pass parser
+const dynamicListValues = {
+  zoneFinder: /lines?\s(?:\d+\s*(?:(?:,|and|\+)?\s*)?)+/gm,
+  matcher: /\d+/g,
+};
 
 const runRegexes = (
   string: string,
@@ -59,10 +63,13 @@ export const getAllLines = (text: string): Set<number> => {
       lines.add(parseInt(match[2]));
     }
   }
-  for (const match of text.matchAll(spaceLineValues)) {
-    for (let i = 1; i < match.length; i++) {
-      if (typeof match[i] === "string") {
-        lines.add(parseInt(match[i]));
+
+  for (const match of text.matchAll(dynamicListValues.zoneFinder)) {
+    if (typeof match[0] === "string") {
+      for (const line of match[0].matchAll(dynamicListValues.matcher)) {
+        if (typeof line[0] === "string") {
+          lines.add(parseInt(line[0]));
+        }
       }
     }
   }

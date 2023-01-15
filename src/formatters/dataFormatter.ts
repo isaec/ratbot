@@ -40,6 +40,13 @@ const moneyFormatter = new Intl.NumberFormat("en-US", {
   currency: "USD",
 });
 
+export const getTotalCost = (dataArray: HyperlinkedPurchaseRequestData[]) =>
+  dataArray
+    .map((obj) => obj.data["Price + Tax"])
+    .filter(defined)
+    .map((price) => parseFloat(price.replace("$", "")))
+    .reduce((a, b) => a + b, 0);
+
 export const formatDataArray = (
   dataArray: HyperlinkedPurchaseRequestData[]
 ): SlackBlock => [
@@ -56,13 +63,7 @@ export const formatDataArray = (
     ),
     [
       md(
-        `*Total Price + Tax:* ${moneyFormatter.format(
-          dataArray
-            .map((obj) => obj.data["Price + Tax"])
-            .filter(defined)
-            .map((price) => parseFloat(price.replace("$", "")))
-            .reduce((a, b) => a + b, 0)
-        )}`
+        `*Total Price + Tax:* ${moneyFormatter.format(getTotalCost(dataArray))}`
       ),
     ]
   ),

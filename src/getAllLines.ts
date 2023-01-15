@@ -1,3 +1,5 @@
+// this collection adds the first match group to the set
+
 /**
  * matches "line 1234" but not "line 1234 and"
  */
@@ -7,11 +9,18 @@ const lineAndCharacter = /lines?\s(\d+)[,.;:!]/g;
 
 const singleHyphenatedLine = /lines?\s(\d+)-(?!\d)/g;
 
-const lineRange = /lines?\s(\d+)-(\d+)/g;
+const finalValueOfGroup = /lines?\s(?:\d+(?:-|and|&|\s)?)*and (\d+)/g;
+
+// this collection requires special interpolation
+const lineRange = /lines?\s(\d+)\s?-\s?(\d+)/g;
 
 const lineAndLine = /lines?\s(\d+)\s(?:and|&|\+)\s(\d+)/g;
 
-const finalValueOfGroup = /lines?\s(?:\d+(?:-|and|&|\s)?)*and (\d+)/g;
+// this one is a two pass parser
+const dynamicListValues = {
+  zoneFinder: /lines?\s(?:\d+\s*(?:(?:,|and|\+)?\s*)?)+/gm,
+  matcher: /\d+/g,
+};
 
 const runRegexes = (
   string: string,
@@ -52,6 +61,16 @@ export const getAllLines = (text: string): Set<number> => {
     if (typeof match[1] === "string" && typeof match[2] === "string") {
       lines.add(parseInt(match[1]));
       lines.add(parseInt(match[2]));
+    }
+  }
+
+  for (const match of text.matchAll(dynamicListValues.zoneFinder)) {
+    if (typeof match[0] === "string") {
+      for (const line of match[0].matchAll(dynamicListValues.matcher)) {
+        if (typeof line[0] === "string") {
+          lines.add(parseInt(line[0]));
+        }
+      }
     }
   }
 

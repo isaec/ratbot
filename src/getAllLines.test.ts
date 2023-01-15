@@ -16,6 +16,8 @@ test.each([
   " seeking approval for lines 134 and 135. are the 3 1/2 needles the correct types we need?",
   "req approval for lines 129-130 (surgical tubing, diff ID). Same ones ordered as last year",
   "seeking approval for lines 16-18 and 22",
+  "seeking approval for line 229",
+  "req approval for line 231 for practice field tarps",
 ])(`getAllLines(%s)`, (text) => {
   expect(setToSortedArray(getAllLines(text))).toMatchSnapshot();
 });
@@ -28,6 +30,13 @@ test.each([
 this is based on balls missed in teleop during madtown, we can do better.`,
     [158],
   ],
+  [`Seeking apporval for line 232 - 234`, [232, 233, 234]],
+  [
+    `Seeking approval for lines 236, 237 to also order other Anderson goodies`,
+    [236, 237],
+  ],
+  [`Req approval for lines 199 120  130`, [120, 130, 199]],
+  [`Seeking approval for lines 199, 200 and 201`, [199, 200, 201]],
 ])(`getAllLines(%s)`, (text, expected) => {
   expect(setToSortedArray(getAllLines(text))).toEqual(expected);
 });

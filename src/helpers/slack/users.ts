@@ -1,7 +1,7 @@
 import { App } from "@slack/bolt";
 import { StringIndexed } from "@slack/bolt/dist/types/helpers";
+import { AppInstance } from "@src/commands/commandInterface";
 
-type AppInstance = App<StringIndexed>;
 // little bit of evil typescript to extract the user type from the app
 type User = Required<
   Awaited<ReturnType<AppInstance["client"]["users"]["info"]>>
@@ -23,7 +23,7 @@ type Result = {
 const pendingUserCache: Map<string, Promise<Result>> = new Map();
 
 export const getDetailsFromUserId = async (
-  app: App<StringIndexed>,
+  app: AppInstance,
   userId: string
 ): Promise<DeepReadonly<User> | undefined> => {
   if (userCache.has(userId)) {
